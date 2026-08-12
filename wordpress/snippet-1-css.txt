@@ -1,5 +1,7 @@
 /* Gastronomic September.
-   Cola isto num CSS Snippet do WPCode, com Auto Insert, Frontend Only.
+   Cola isto num CSS Snippet do WPCode: Auto Insert, Site Wide Header.
+   Carrega em todas as paginas, mas tudo esta preso a .gs e nao toca
+   no resto do site.
    As fontes vem do tema, por isso o bloco @font-face foi retirado. */
 
 /* =============================================================================
@@ -643,7 +645,6 @@ a:focus-visible > .gs-media img,
 [data-anim].gs-carousel .gs-media { transition-delay: var(--gs-delay, 0ms); }
 
 /* Without JavaScript the reveal never runs, so nothing may start hidden. */
-html:not(.js) [data-anim] { opacity: 1 !important; visibility: visible !important; transform: none !important; }
 
 @media (prefers-reduced-motion: reduce) {
   .gs *,
@@ -652,5 +653,5 @@ html:not(.js) [data-anim] { opacity: 1 !important; visibility: visible !importan
     transition-duration: .01ms !important;
     animation-duration: .01ms !important;
   }
-  [data-anim] { opacity: 1 !important; visibility: visible !important; transform: none !important; }
+  .gs [data-anim] { opacity: 1 !important; visibility: visible !important; transform: none !important; }
 }

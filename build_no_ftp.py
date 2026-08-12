@@ -38,8 +38,39 @@ def write_snippets():
     css = css.replace('@charset "UTF-8";\n', '')
     assert '@font-face' not in css, 'font-face still present'
 
+    # WPCode Lite only auto-inserts site wide, so this stylesheet loads on every
+    # page. Two rules were written for a page that carries its own <head> and
+    # would otherwise reach the rest of the site: the no-JS fallback, whose `js`
+    # class is set by an inline script that does not travel with the pasted
+    # block, and the reduced-motion override. The first is dropped because the
+    # theme always loads anim.js here; the second is scoped to .gs.
+    css = css.replace(
+        "html:not(.js) [data-anim] { opacity: 1 !important; "
+        "visibility: visible !important; transform: none !important; }\n", "")
+    css = css.replace(
+        "  [data-anim] { opacity: 1 !important; ",
+        "  .gs [data-anim] { opacity: 1 !important; ")
+
+    # Anything able to paint outside .gs is a leak, since this loads site wide.
+    # Rules that only declare custom properties are fine: they set variables on
+    # attributes that exist nowhere else on the site.
+    def only_vars(line):
+        if "}" not in line:
+            return False
+        body = line[line.index("{") + 1:line.rindex("}")]
+        decls = [d.strip() for d in body.split(";") if d.strip()]
+        return bool(decls) and all(d.startswith("--") for d in decls)
+
+    loose = [l for l in css.split("\n")
+             if l[:1] not in ("", " ", "/", "*", "}", "@")
+             and "{" in l and ".gs" not in l and ":root" not in l
+             and not only_vars(l)]
+    assert not loose, "regras fora de .gs: %s" % loose[:3]
+
     banner = ('/* Gastronomic September.\n'
-              '   Cola isto num CSS Snippet do WPCode, com Auto Insert, Frontend Only.\n'
+              '   Cola isto num CSS Snippet do WPCode: Auto Insert, Site Wide Header.\n'
+              '   Carrega em todas as paginas, mas tudo esta preso a .gs e nao toca\n'
+              '   no resto do site.\n'
               '   As fontes vem do tema, por isso o bloco @font-face foi retirado. */\n\n')
     with open(os.path.join(OUT, 'snippet-1-css.txt'), 'w', encoding='utf-8', newline='\n') as fh:
         fh.write(banner + css)
