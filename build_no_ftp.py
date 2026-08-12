@@ -39,19 +39,7 @@ def write_snippets():
     assert '@font-face' not in css, 'font-face still present'
 
     # WPCode Lite only auto-inserts site wide, so this stylesheet loads on every
-    # page. Two rules were written for a page that carries its own <head> and
-    # would otherwise reach the rest of the site: the no-JS fallback, whose `js`
-    # class is set by an inline script that does not travel with the pasted
-    # block, and the reduced-motion override. The first is dropped because the
-    # theme always loads anim.js here; the second is scoped to .gs.
-    css = css.replace(
-        "html:not(.js) [data-anim] { opacity: 1 !important; "
-        "visibility: visible !important; transform: none !important; }\n", "")
-    css = css.replace(
-        "  [data-anim] { opacity: 1 !important; ",
-        "  .gs [data-anim] { opacity: 1 !important; ")
-
-    # Anything able to paint outside .gs is a leak, since this loads site wide.
+    # page. Anything able to paint outside .gs is a leak.
     # Rules that only declare custom properties are fine: they set variables on
     # attributes that exist nowhere else on the site.
     def only_vars(line):
@@ -98,6 +86,9 @@ def rebuild_blocks(base):
             p = os.path.join(OUT, lang, f'{page}.html')
             s = open(p, encoding='utf-8').read()
             s = s.replace(theme, base)
+            # Every rule is scoped to .gs; a block without it renders blank,
+            # because the theme hides [data-anim] until its own script runs.
+            assert 'class="gs"' in s, f'{lang}/{page}: sem o wrapper .gs'
             open(p, 'w', encoding='utf-8', newline='\n').write(s)
             n += 1
     print(f'  {n} blocos apontam agora para {base}')

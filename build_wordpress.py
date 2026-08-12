@@ -42,11 +42,20 @@ def to_wordpress(markup, lang):
     for page in PAGES:
         body = body.replace(f'href="{page}.html"', f'href="{page_url(lang, page)}"')
 
+    # Every rule in the stylesheet is scoped to .gs, which on the standalone
+    # pages sits on <body>. That element does not travel with the block, so the
+    # wrapper carries the class instead. Without it nothing matches, and the
+    # page does not merely lose its styling: the theme hides [data-anim=fade]
+    # above 1200px until its script adds .animated, and every section here
+    # carries that attribute, so the page renders blank.
+    body = f'<div class="gs">\n{body.strip()}\n</div>'
+
     header = (f'<!-- Gastronomy - September · {lang.upper()} · '
               f'cola isto no editor da página em modo HTML.\n'
               f'     A página é {page_url(lang, "index")} e as noites são páginas filhas.\n'
-              f'     Não colar <header> nem <footer>: são do tema. -->\n')
-    return header + body.strip() + '\n'
+              f'     Não colar <header> nem <footer>: são do tema.\n'
+              f'     A <div class="gs"> de fora é obrigatória, é o que liga o CSS. -->\n')
+    return header + body + '\n'
 
 
 ENQUEUE = '''<?php

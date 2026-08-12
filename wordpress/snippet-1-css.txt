@@ -640,11 +640,18 @@ a:focus-visible > .gs-media img,
 /* =============================== 10. MOTION ============================== */
 
 /* Reveals reuse the theme's [data-anim] contract; only the stagger is new. */
-[data-anim].gs-chef,
-[data-anim].gs-slide .gs-media,
-[data-anim].gs-carousel .gs-media { transition-delay: var(--gs-delay, 0ms); }
+.gs [data-anim].gs-chef,
+.gs [data-anim].gs-slide .gs-media,
+.gs [data-anim].gs-carousel .gs-media { transition-delay: var(--gs-delay, 0ms); }
 
-/* Without JavaScript the reveal never runs, so nothing may start hidden. */
+/* Nothing here may start hidden until something is known to be able to reveal
+   it. carousel.js adds gs-js as its first act, so the window in which this
+   applies is the window in which no reveal is coming: the file missing, blocked
+   or still loading. The theme hides [data-anim=fade] above 1200px and every
+   section on these pages carries it, so without this the page renders blank
+   rather than merely still. */
+.gs:not(.gs-js) [data-anim],
+.gs:not(.gs-js) [data-anim] img { opacity: 1 !important; visibility: visible !important; transform: none !important; }
 
 @media (prefers-reduced-motion: reduce) {
   .gs *,
@@ -653,5 +660,6 @@ a:focus-visible > .gs-media img,
     transition-duration: .01ms !important;
     animation-duration: .01ms !important;
   }
-  .gs [data-anim] { opacity: 1 !important; visibility: visible !important; transform: none !important; }
+  .gs [data-anim],
+  .gs [data-anim] img { opacity: 1 !important; visibility: visible !important; transform: none !important; }
 }
