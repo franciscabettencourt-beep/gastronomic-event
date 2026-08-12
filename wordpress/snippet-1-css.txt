@@ -1,0 +1,656 @@
+/* Gastronomic September.
+   Cola isto num CSS Snippet do WPCode, com Auto Insert, Frontend Only.
+   As fontes vem do tema, por isso o bloco @font-face foi retirado. */
+
+/* =============================================================================
+   Gastronomy - September
+   Landing pages for vilalara.com
+
+   BUILD 7 - Book your table and Menu on every evening page, index dates below
+   each name and the row optically centred, Invite chef tightened, section titles
+   pulled closer to their photographs, More information optically centred.
+   If the page does not match this list, the browser is serving an older copy of
+   this file: hard-reload once (Ctrl+Shift+R).
+
+   Additive only. Tokens, header, footer, buttons, hairlines and the [data-anim]
+   reveals all come from the live theme (main.min.css); nothing is redeclared
+   here. Every measurement below is taken from the approved mockups at their
+   1920 px design width, then expressed with clamp() so it scales down.
+
+   0. Brand fonts     re-declared so the page renders off vilalara.com too
+   1. Page tokens
+   2. Primitives      eyebrow / display / lead / rule / button / media
+   3. Hero
+   4. Chefs
+   5. Culinary fusion (carousel)
+   6. The arena band
+   7. Hub page        head / index / event rows
+   8. Responsive
+   9. Focus
+  10. Motion
+   ========================================================================== */
+
+/* ============================ 1. PAGE TOKENS ============================= */
+
+.gs {
+  /* Body copy in the mockups is #231F20. The site sets copy in --color-marron.
+     Swap the line below to var(--color-marron) to follow the site instead. */
+  --gs-ink: #231F20;
+  --gs-band: var(--color-arena);      /* mockup swatch #DDD8C8; site token used */
+
+  /* vertical rhythm, design px @1920 */
+  --gs-rule-w: 150px;
+  --gs-gap: 178px;                    /* the gutter between two chef portraits */
+  --gs-chefs-title-mt: clamp(54px, 5.26vw, 101px);
+  --gs-chefs-grid-mt:  clamp(52px, 6.667vw, 128px);
+  --gs-chef-name-mt:   clamp(21px, 2.083vw, 40px);
+  --gs-chef-bio-mt:    clamp(32px, 4.635vw, 89px);
+  --gs-chefs-pb:       clamp(74px, 9.167vw, 176px);
+  --gs-track-mt:       clamp(56px, 6.042vw, 116px);
+  --gs-dots-mt:        clamp(28px, 2.813vw, 54px);
+  --gs-outro-pt:       clamp(44px, 4.167vw, 80px);
+
+  color: var(--color-marron);
+  background-color: var(--color-arena-light);
+}
+
+/* No overflow guard on the root here on purpose. `overflow-x: hidden` on <body>
+   turns it into a scroll container and the theme's scroll-reveal (anim.js
+   listens on window) never fires; `clip` on <html> propagates to the viewport
+   and stops the page scrolling at all. Nothing full-bleed overflows: the hero
+   is width:100% and the arena band is inset-inline:0 inside its own container. */
+
+.gs-shell {
+  width: 100%;
+  max-width: 1920px;
+  margin-inline: auto;
+  padding-inline: clamp(24px, 5.83vw, 112px);   /* 112px = theme .p-lg-medium */
+}
+
+/* The theme sizes the wordmark from a percentage that assumes the WordPress
+   header markup. Pinned here to the 166 x 44 it renders at on the live site,
+   which is what keeps the bar at its 88 + 36 = 124 px. Desktop only - below
+   that the theme's own responsive header is left alone. */
+@media (min-width: 1200px) {
+  .gs header .navbar-brand { width: auto; padding-block: 22px; }
+  .gs header .navbar-brand img { width: 166px; height: auto; }
+}
+
+/* Below that the theme relocates the wordmark with JavaScript that only runs
+   inside WordPress, so the static preview is held to the sizes the live site
+   renders: 186 at 1024, 138 at 768, 135 on a phone. */
+@media (max-width: 1199px) {
+  .gs header .navbar-brand img { width: clamp(135px, 18vw, 186px); height: auto; }
+}
+
+/* ============================= 2. PRIMITIVES ============================== */
+
+/* -- eyebrow: tracked Optima capitals, the lockup's upper line -------------- */
+.gs-eyebrow {
+  margin: 0;
+  font-family: var(--font-optima);
+  font-weight: 300;
+  font-size: clamp(13px, .938vw, 18px);
+  line-height: 1.4;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--color-marron);
+}
+
+/* -- display: the Millionaire script word ---------------------------------- */
+.gs-display {
+  margin: 0;
+  font-family: var(--font-millionaire-script);
+  font-weight: 400;
+  font-size: clamp(44px, 3.75vw, 72px);
+  line-height: 1.12;
+  letter-spacing: .05em;
+  text-transform: none;
+  color: var(--color-marron);
+}
+
+.gs-display--section { font-size: clamp(30px, 2.083vw, 40px); }
+
+/* CSS adds tracking after the last glyph too. Pulling one unit back off the
+   end re-centres every tracked word optically, script and capitals alike. */
+.gs-display,
+.gs-tab,
+.gs-signature b { margin-right: -.05em; }
+.gs-eyebrow,
+.gs-signature span { margin-right: -.1em; }
+
+/* -- lead: the Gill Sans paragraph ----------------------------------------- */
+.gs-lead {
+  max-width: 860px;
+  margin: 0 auto;
+  font-family: var(--font-gill);
+  font-weight: 300;
+  font-size: clamp(15px, 1.042vw, 20px);
+  line-height: 1.28;
+  letter-spacing: .047em;
+  color: var(--gs-ink);
+  text-align: center;
+  text-wrap: pretty;
+}
+
+/* -- rule: the brand hairline ---------------------------------------------- */
+.gs-rule {
+  width: var(--gs-rule-w);
+  max-width: calc(100% - 48px);
+  height: 1px;
+  margin: 0 auto;
+  border: 0;
+  background-color: var(--color-marron);
+  opacity: 1;
+}
+
+/* -- button: the theme's outline pill at the mockup's size ------------------ */
+.gs-btn.vl-btn {
+  height: 33px;
+  padding: 0 16px;          /* the theme adds padding-top:4px, which sits the label low */
+  font-family: var(--font-optima);
+  font-size: clamp(11px, .625vw, 12px);
+  line-height: 1;
+  letter-spacing: .097em;
+  text-decoration: none;
+}
+
+/* -- media: rounded photograph, zoom on hover ------------------------------ */
+.gs-media {
+  position: relative;
+  display: block;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 20px;
+  background-color: var(--color-arena);
+}
+
+.gs-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.2s cubic-bezier(.165, .84, .44, 1);
+}
+
+a:hover > .gs-media img,
+a:focus-visible > .gs-media img,
+.gs-media--hover:hover img { transform: scale(1.045); }
+
+/* ================================ 3. HERO ================================ */
+
+.gs-hero {
+  width: 100%;
+  height: clamp(240px, 30.7vw, 590px);   /* 589.4 px at the 1920 design width */
+  margin: 0;
+  overflow: hidden;
+  background-color: var(--color-arena);
+}
+
+.gs-hero img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% var(--gs-hero-y, 50%);
+}
+
+/* ------------------------------- intro ----------------------------------- */
+
+.gs-intro {
+  padding-top: clamp(60px, 5.521vw, 106px);
+  padding-bottom: clamp(66px, 8.75vw, 168px);
+  text-align: center;
+}
+
+.gs-intro .gs-display { margin-top: clamp(6px, .625vw, 12px); }
+.gs-intro .gs-lead    { margin-top: clamp(44px, 5.938vw, 114px); }
+
+/* the closing paragraph, after the collage */
+.gs-outro {
+  padding-top: var(--gs-outro-pt);
+  padding-bottom: clamp(72px, 9.44vw, 181px);
+  text-align: center;
+}
+
+/* Two calls to action, then a quiet way back. The pill is the theme's, at the
+   size the mockups draw it. */
+.gs-cta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(12px, 1.25vw, 24px);
+  margin-top: clamp(68px, 6.719vw, 129px);
+}
+
+.gs-btn-cta.vl-btn {
+  height: clamp(38px, 2.41vw, 46px);
+  padding: 0 clamp(25px, 2.396vw, 46px);
+  font-family: var(--font-optima);
+  font-size: clamp(13px, .875vw, 16.8px);
+  line-height: 1;
+  letter-spacing: .06em;
+  text-decoration: none;
+}
+
+.gs-back {
+  display: inline-block;
+  margin-top: clamp(22px, 1.875vw, 36px);
+  padding-bottom: 3px;
+  border-bottom: 1px solid rgba(var(--color-marron-rgb), .3);
+  font-family: var(--font-optima);
+  font-size: clamp(11px, .625vw, 12px);
+  letter-spacing: .097em;
+  text-transform: uppercase;
+  color: var(--color-marron);
+  text-decoration: none;
+  transition: border-color .35s ease;
+}
+
+.gs-back:hover,
+.gs-back:focus-visible { color: var(--color-marron); border-bottom-color: var(--color-marron); }
+
+/* =============================== 4. CHEFS ================================ */
+
+.gs-chefs,
+.gs-fusion { position: relative; z-index: 1; text-align: center; }
+
+.gs-chefs { padding-bottom: var(--gs-chefs-pb); }
+
+.gs-chefs .gs-display  { margin-top: var(--gs-chefs-title-mt); }
+.gs-fusion .gs-display { margin-top: clamp(58px, 5.521vw, 106px); }
+
+.gs-chef-grid {
+  display: grid;
+  grid-template-columns: repeat(var(--gs-cols, 2), minmax(0, 1fr));
+  gap: 0 var(--gs-chef-gap, var(--gs-gap));
+  width: 100%;
+  max-width: var(--gs-chef-max, 914px);   /* 2 x 368 + 178 */
+  margin: var(--gs-chefs-grid-mt) auto 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Algarve fields four chefs; the portrait keeps its 3:4 crop and the row
+   simply carries a tighter gutter. */
+.gs-chef-grid[data-count="4"] {
+  --gs-cols: 4;
+  --gs-chef-gap: clamp(20px, 3.44vw, 66px);
+  --gs-chef-max: 1670px;
+}
+
+.gs-chef .gs-media { aspect-ratio: 368 / 491; }
+
+.gs-chef__name {
+  margin: var(--gs-chef-name-mt) 0 0;
+  margin-right: -.05em;
+  font-family: var(--font-millionaire-script);
+  font-weight: 400;
+  font-size: clamp(17px, 1.042vw, 20px);
+  line-height: 1.3;
+  letter-spacing: .05em;
+  color: var(--color-marron);
+}
+
+.gs-chef__bio {
+  max-width: 310px;
+  margin: var(--gs-chef-bio-mt) auto 0;
+  font-family: var(--font-gill);
+  font-weight: 300;
+  font-size: clamp(14px, .833vw, 16px);
+  line-height: 1.25;
+  letter-spacing: .038em;
+  color: var(--gs-ink);
+  text-wrap: pretty;
+}
+
+/* ========================= 5. CULINARY FUSION ============================ */
+
+/* A scroll-snap row. Four slides across at the design width, fewer as the page
+   narrows, and it swipes on touch with no script at all - carousel.js only
+   wires the dots. */
+.gs-carousel { --gs-slides: 4; margin-top: var(--gs-track-mt); }
+
+.gs-carousel__track {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: calc((100% - (var(--gs-slides) - 1) * var(--gs-slide-gap, 60px)) / var(--gs-slides));
+  gap: var(--gs-slide-gap, 60px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.gs-carousel__track::-webkit-scrollbar { display: none; }
+
+.gs-slide { scroll-snap-align: start; }
+
+.gs-slide .gs-media { aspect-ratio: var(--gs-slide-ratio, 378 / 566); }
+
+/* Mediterraneo's four dishes are photographed in landscape */
+[data-evening="mediterraneo"] .gs-slide .gs-media { --gs-slide-ratio: 378 / 266; }
+
+/* -- the dots ------------------------------------------------------------- */
+.gs-carousel__dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: var(--gs-dots-mt);
+}
+
+.gs-dot {
+  width: 7px;
+  height: 7px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background-color: var(--color-arena);
+  cursor: pointer;
+  transition: background-color .4s ease, transform .4s ease;
+}
+
+.gs-dot:hover { background-color: rgba(var(--color-marron-rgb), .45); }
+.gs-dot[aria-current] { background-color: var(--color-marron); transform: scale(1.15); }
+
+/* the dots sit on the arena band on some evenings; keep them legible there */
+.gs-dot { box-shadow: 0 0 0 1px rgba(var(--color-marron-rgb), .18); }
+
+/* ============================ 6. ARENA BAND ============================== */
+
+/* A single field of arena that starts partway down the portraits and ends
+   inside the carousel. Held as percentages of the block it spans, so the
+   crossings stay where the designer put them as the page reflows. */
+.gs-field { position: relative; }
+
+.gs-field::before {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  top: var(--gs-band-top, 28.5%);
+  bottom: var(--gs-band-bottom, 21.2%);
+  background-color: var(--gs-band);
+  z-index: 0;
+}
+
+/* Algarve carries four portraits, so its name and note sit a touch tighter
+   under the smaller row. Everything above them is identical across the four. */
+.gs-field[data-chefs="4"] {
+  --gs-chef-name-mt: clamp(17px, 1.667vw, 32px);
+  --gs-chef-bio-mt:  clamp(29px, 4.219vw, 81px);
+  --gs-chefs-pb:     clamp(81px, 10.052vw, 193px);
+}
+
+/* Per evening: where the arena band crosses, and the drop to the dots. Each
+   artboard holds the band at the same absolute height over a differently sized
+   section, so the crossings are percentages of the block the band spans. */
+[data-evening="atlantico"]    { --gs-band-top: 28.44%; --gs-band-bottom: 22.59%; --gs-dots-mt: clamp(28px, 2.760vw, 53px); }
+[data-evening="fogo"]         { --gs-band-top: 28.43%; --gs-band-bottom: 22.68%; --gs-dots-mt: clamp(28px, 2.813vw, 54px); }
+[data-evening="mediterraneo"] { --gs-band-top: 32.97%; --gs-band-bottom: 10.28%; --gs-dots-mt: clamp(36px, 3.646vw, 70px); }
+[data-evening="algarve"]      { --gs-band-top: 28.63%; --gs-band-bottom: 17.91%; --gs-dots-mt: clamp(42px, 4.167vw, 80px); }
+
+/* ============================== 7. HUB PAGE ============================== */
+
+.gs-hub-head {
+  background-color: var(--gs-band);
+  padding-top: clamp(45px, 4.844vw, 93px);
+  padding-bottom: clamp(50px, 5.781vw, 111px);
+  text-align: center;
+}
+
+/* The lockup: tracked Optima capitals over the script word. Selector carries the
+   full .vl-card.slider-card-info chain because the theme sets this title to 27 px
+   and strips its tracking from there - at 0,3,0 it outranks a plainer selector. */
+.gs-hub-head .vl-card.slider-card-info .vl-card-title {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  font-family: var(--font-optima);
+  font-weight: 300;
+  font-size: clamp(32px, 2.604vw, 50px);
+  line-height: 1.16;
+  letter-spacing: .097em;
+  text-transform: uppercase;
+  color: var(--color-marron);
+  margin-bottom: 0;
+}
+
+.gs-hub-head .vl-card.slider-card-info .vl-card-title i {
+  margin-top: clamp(6px, .573vw, 11px);
+  margin-right: -.05em;
+  font-family: var(--font-millionaire-script);
+  font-size: clamp(27px, 2.083vw, 40px);
+  font-style: normal;
+  line-height: 1.12;
+  letter-spacing: .05em;
+  text-transform: none;
+}
+
+.gs-hub-head .gs-rule  { --gs-rule-w: 92px; margin-top: clamp(55px, 5.417vw, 104px); }
+.gs-hub-head .gs-lead  { max-width: 800px; margin-top: clamp(23px, 2.188vw, 42px); font-size: clamp(16px, 1.146vw, 22px); line-height: 1.364; }
+
+/* -- index of the four evenings ------------------------------------------- */
+.gs-index {
+  width: 100%;
+  max-width: 1432px;
+  margin: clamp(44px, 6.25vw, 120px) auto 0;
+  border-top: 1px solid var(--color-marron);
+  border-bottom: 1px solid var(--color-marron);
+}
+
+.gs-index ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0 clamp(24px, 3vw, 60px);
+  width: 100%;
+  max-width: 1360px;
+  margin: 0 auto;
+  /* asymmetric on purpose: the script ascenders sit high in their line box
+     and the dates carry descenders, so equal padding would read top-heavy.
+     These two values put the same air above the tallest letter as below the
+     lowest one. */
+  padding: clamp(11px, 1.141vw, 21.9px) 0 clamp(8px, .839vw, 16.1px);
+  list-style: none;
+}
+
+.gs-tab {
+  display: inline-block;
+  padding: clamp(1px, .104vw, 2px) 0 clamp(4px, .417vw, 8px);
+  font-family: var(--font-millionaire-script);
+  font-size: clamp(14px, .833vw, 16px);
+  line-height: 1.35;
+  letter-spacing: .05em;
+  color: var(--color-marron);
+  text-decoration: none;
+  transition: opacity .35s ease;
+}
+
+.gs-tab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* the evening's date, same script a size down */
+.gs-tab__date {
+  margin-top: clamp(2px, .26vw, 5px);
+  margin-right: -.05em;
+  font-size: clamp(11px, .625vw, 12px);
+  letter-spacing: .06em;
+  opacity: .7;
+}
+
+.gs-tab:hover,
+.gs-tab:focus-visible { color: var(--color-marron); opacity: .55; }
+
+/* -- one evening, image one side and the invitation the other -------------- */
+.gs-event {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: stretch;
+  min-height: clamp(520px, 52.1vw, 1000px);
+  background-color: var(--color-arena-light);
+}
+
+.gs-event__media { margin: 0; overflow: hidden; }
+
+.gs-event__media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.6s cubic-bezier(.165, .84, .44, 1);
+}
+
+.gs-event:hover .gs-event__media img { transform: scale(1.04); }
+
+/* The invitation leads in the markup, so the heading is read before the
+   photograph. The second and fourth evenings flip the photograph to the left. */
+.gs-event__media { order: 2; }
+.gs-event--reverse .gs-event__media { order: -1; }
+
+.gs-event__body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(56px, 4.2vw, 80px) clamp(24px, 3.1vw, 60px) clamp(58px, 4.427vw, 85px);
+  text-align: center;
+}
+
+/* the hub rows set their own lockup: smaller capitals, larger script word than
+   the section headings on the evening pages */
+.gs-event .gs-eyebrow { font-size: clamp(11px, .729vw, 14px); }
+.gs-event .gs-display--section { font-size: clamp(30px, 2.604vw, 50px); }
+.gs-event__body .gs-display { margin-top: clamp(12px, 1.146vw, 22px); }
+
+.gs-event__text {
+  max-width: 320px;
+  margin: clamp(29px, 2.969vw, 57px) auto 0;
+  font-family: var(--font-gill);
+  font-weight: 300;
+  font-size: clamp(15px, .938vw, 18px);
+  line-height: 1.156;
+  letter-spacing: .038em;
+  color: var(--gs-ink);
+  text-wrap: pretty;
+}
+
+/* the chef signature, with the label set flush to the end of the name */
+.gs-signature {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-top: clamp(38px, 4.06vw, 78px);
+}
+
+.gs-signature b {
+  font-family: var(--font-millionaire-script);
+  font-weight: 400;
+  font-size: clamp(22px, 1.536vw, 29.5px);
+  line-height: 1.2;
+  letter-spacing: .05em;
+  color: var(--color-marron);
+}
+
+.gs-signature span {
+  margin-top: clamp(4px, .417vw, 8px);
+  font-family: var(--font-optima);
+  font-size: clamp(11px, .729vw, 14px);
+  line-height: 1.3;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--color-marron);
+}
+
+.gs-event .gs-btn { margin-top: clamp(40px, 4.375vw, 84px); }
+
+/* ============================= 8. RESPONSIVE ============================= */
+
+/* Laptop and small desktop: the design holds, the gutters close up. */
+@media (max-width: 1399px) {
+  .gs { --gs-gap: clamp(48px, 9vw, 130px); }
+  .gs-carousel { --gs-slide-gap: clamp(24px, 3.5vw, 60px); }
+}
+
+/* Tablet: the four-up chef row halves, the event rows keep their split. */
+@media (max-width: 1024px) {
+  .gs { --gs-gap: 56px; --gs-rule-w: 150px; }
+
+  .gs-chef-grid { --gs-chef-max: 560px; gap: 56px 64px; }
+  .gs-chef-grid[data-count="4"] { --gs-cols: 2; --gs-chef-gap: 64px; --gs-chef-max: 560px; }
+  .gs-carousel { --gs-slides: 2.2; --gs-slide-gap: 24px; }
+
+  .gs-index ul { gap: 4px 48px; }
+  .gs-event__body { padding-block: clamp(48px, 7vw, 80px); }
+}
+
+/* Phone: everything stacks, and the collages become a plain two-up.
+   The band stops chasing content it can no longer align to. */
+@media (max-width: 767px) {
+  .gs { --gs-rule-w: 120px; }
+
+  .gs-hero { height: clamp(280px, 56.25vw, 420px); }
+  .gs-hero img { object-position: 50% 50%; }
+
+  .gs-chef-grid,
+  .gs-chef-grid[data-count="4"] { --gs-cols: 1; --gs-chef-max: 300px; gap: 48px; }
+
+  .gs-carousel { --gs-slides: 1.15; --gs-slide-gap: 14px; }
+  .gs-carousel__track { padding-inline: 2px; }
+  .gs-slide .gs-media { border-radius: 14px; }
+
+  .gs-field::before { top: 22%; bottom: 22%; }
+
+  .gs-event { grid-template-columns: 1fr; min-height: 0; }
+  .gs-event__media { aspect-ratio: 4 / 3; }
+  .gs-event__media,
+  .gs-event--reverse .gs-event__media { order: -1; }   /* photograph above the words */
+  .gs-event__body { padding-block: 56px; }
+
+  .gs-index ul { flex-direction: column; align-items: center; gap: 2px; padding-block: 16px 13px; }
+  .gs-media { border-radius: 14px; }
+}
+
+/* ================================ 9. FOCUS =============================== */
+
+/* The theme resets `* { outline: none }`, which leaves keyboard users with no
+   indicator anywhere. Restored here for this page only - nothing changes at
+   rest, so the design is untouched. Worth lifting into the theme. */
+.gs :is(a, button, [tabindex]):focus-visible {
+  outline: 2px solid var(--color-marron);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.gs .vl-bg-dark :is(a, button):focus-visible,
+.gs header nav.desktop :is(a, button):focus-visible {
+  outline-color: var(--color-arena-light);
+}
+
+.gs .gs-media:has(:focus-visible),
+.gs a:focus-visible > .gs-media { outline: 2px solid var(--color-marron); outline-offset: 3px; }
+
+/* =============================== 10. MOTION ============================== */
+
+/* Reveals reuse the theme's [data-anim] contract; only the stagger is new. */
+[data-anim].gs-chef,
+[data-anim].gs-slide .gs-media,
+[data-anim].gs-carousel .gs-media { transition-delay: var(--gs-delay, 0ms); }
+
+/* Without JavaScript the reveal never runs, so nothing may start hidden. */
+html:not(.js) [data-anim] { opacity: 1 !important; visibility: visible !important; transform: none !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  .gs *,
+  .gs *::before,
+  .gs *::after {
+    transition-duration: .01ms !important;
+    animation-duration: .01ms !important;
+  }
+  [data-anim] { opacity: 1 !important; visibility: visible !important; transform: none !important; }
+}
