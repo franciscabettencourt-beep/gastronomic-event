@@ -431,6 +431,31 @@ def build_hub(lang):
 ''' + footer())
 
 
+def build_root_redirect():
+    """Root index, for static previews such as GitHub Pages.
+
+    On the real site nothing lives at this address: each language sits under its
+    own folder. This sends the visitor to their own language, falls back to
+    English, and still works with JavaScript off through the meta refresh. It is
+    marked noindex so it never competes with the real pages in search.
+    """
+    options = ''.join("'%s'," % l for l in C.LANGS)
+    return (
+        '<!DOCTYPE html>\n<html lang="en">\n<head>\n'
+        '<meta charset="utf-8">\n'
+        '<meta name="robots" content="noindex">\n'
+        '<meta http-equiv="refresh" content="0; url=en/">\n'
+        '<title>Gastronomy - September | Vilalara Grand Hotel Algarve</title>\n'
+        '<link rel="canonical" href="' + canonical('en') + '">\n'
+        '<script>\n(function () {\n'
+        "  var want = (navigator.language || 'en').slice(0, 2).toLowerCase();\n"
+        '  var have = [' + options + '];\n'
+        "  location.replace((have.indexOf(want) > -1 ? want : 'en') + '/');\n"
+        '})();\n</script>\n</head>\n<body>\n'
+        '<p>Redirecting to <a href="en/">Gastronomy - September</a>.</p>\n'
+        '</body>\n</html>\n')
+
+
 if __name__ == '__main__':
     missing = [k for k, v in MENUS.items() if not v]
     if missing:
@@ -451,4 +476,9 @@ if __name__ == '__main__':
                 fh.write(markup)
             total += len(markup)
         print(f'  {lang}/   {len(pages)} paginas   /{lang}/{C.SLUG[lang]}/')
+    with open(os.path.join(HERE, 'index.html'), 'w', encoding='utf-8', newline='\n') as fh:
+        fh.write(build_root_redirect())
+    # keeps GitHub Pages from rendering README.md as the home page
+    open(os.path.join(HERE, '.nojekyll'), 'w').close()
+    print('  index.html    redireciona para a lingua do visitante')
     print(f'\n{len(C.LANGS) * 5} paginas, {total / 1024:.0f} KB')
