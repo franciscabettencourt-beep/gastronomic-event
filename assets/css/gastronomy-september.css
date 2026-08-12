@@ -52,6 +52,30 @@
 
 /* ============================ 1. PAGE TOKENS ============================= */
 
+/* Living inside a template that was written for legal text.
+   ---------------------------------------------------------
+   This theme has no working generic page template. All 35 pages on the site
+   carry a bespoke PHP file, and the default one prints nothing whatsoever, so
+   a page left on it answers 200 with an empty body however good its content
+   is. The legal pages are the only ones that call the_content(), so that is
+   the template these pages have to borrow, and it brings two things with it:
+
+       <section class="content container">     a narrow, padded column
+         <h1 class="page-title">…</h1>         the WordPress page title
+
+   Both are undone below. The design is full bleed at 1920 and carries its own
+   H1, and a second one would be a heading-order fault as well as a visual one.
+   The page title still does its work in menus, in search and in the tab.
+
+   Two selectors for the same job: :has() where the browser supports it, and a
+   class that carousel.js puts on the same element where it does not. Neither
+   can match anywhere else on the site, since both need a .gs on the page. */
+.gs-host,
+.content.container:has(> .gs) { max-width: none; padding: 0; margin-inline: 0; }
+
+.gs-host > .page-title,
+.content.container:has(> .gs) > .page-title { display: none; }
+
 .gs {
   /* Body copy in the mockups is #231F20. The site sets copy in --color-marron.
      Swap the line below to var(--color-marron) to follow the site instead. */

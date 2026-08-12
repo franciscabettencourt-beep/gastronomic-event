@@ -27,6 +27,15 @@
      handful of getBoundingClientRect calls on five elements is not a cost
      worth that risk. */
   Array.prototype.forEach.call(document.querySelectorAll('.gs'), function (gs) {
+
+    /* The borrowed template wraps the content in a narrow column meant for
+       legal text. The stylesheet undoes it with :has(), and marks it here as
+       well for browsers without :has(). See section 1 of the stylesheet. */
+    var host = gs.parentNode;
+    if (host && host.classList && host.classList.contains('content')) {
+      host.classList.add('gs-host');
+    }
+
     var targets = Array.prototype.slice.call(gs.querySelectorAll('[data-anim]'));
 
     function reveal() {
