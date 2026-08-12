@@ -7,7 +7,7 @@
  */
 add_action( 'wp_enqueue_scripts', function () {
 
-    $slugs = array( 'gastronomic', 'gastronomico', 'gastronomico', 'gastronomisch', 'gastronomique', 'atlantico', 'fogo', 'mediterraneo', 'algarve' );
+    $slugs = array( 'gastronomic-september', 'setembro-gastronomico', 'septiembre-gastronomico', 'gastronomischer-september', 'septembre-gastronomique', 'atlantico', 'fogo', 'mediterraneo', 'algarve' );
 
     if ( ! is_page( $slugs ) ) {
         return;

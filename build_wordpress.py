@@ -101,8 +101,11 @@ if __name__ == '__main__':
             n += 1
         print(f'  wordpress/{lang}/   5 blocos   {page_url(lang, "index")}')
 
-    slugs = ', '.join(f"'{C.SLUG[l]}'" for l in C.LANGS)
-    slugs += ", 'atlantico', 'fogo', 'mediterraneo', 'algarve'"
+    # is_page() matches post_name, which is the last path segment, never the
+    # full path. English and German both land on `september`, hence the dedupe.
+    names = list(dict.fromkeys(C.PAGE_SLUG[l] for l in C.LANGS))
+    names += ['atlantico', 'fogo', 'mediterraneo', 'algarve']
+    slugs = ', '.join(f"'{n}'" for n in names)
     with open(os.path.join(OUT, 'enqueue.php'), 'w', encoding='utf-8', newline='\n') as fh:
         fh.write(ENQUEUE.replace('%SLUGS%', slugs))
 

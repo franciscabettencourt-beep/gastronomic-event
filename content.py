@@ -13,14 +13,26 @@ marked `REVIEW` below: they need a native pass before they go live.
 LANGS = ['en', 'pt', 'es', 'de', 'fr']
 NEEDS_NATIVE_REVIEW = ['es', 'de', 'fr']
 
-# The page slug per language. The event pages sit underneath it.
+# The hub's slug per language. The four evenings sit underneath it.
+#
+# Top level, deliberately: this is an event with a start and an end, not a
+# section of the site, so it does not belong under the permanent Gastronomy
+# page (/en/gastronomy/, /pt/gastronomia/, and so on).
+#
+# Two words rather than one, for the same reason `gastronomic` was dropped: a
+# lone `gastronomic` next to an existing `gastronomy` reads as a typo of it.
+# The pair names the event, and matches the wording on the page itself.
 SLUG = {
-    'en': 'gastronomic',
-    'pt': 'gastronomico',
-    'es': 'gastronomico',
-    'de': 'gastronomisch',
-    'fr': 'gastronomique',
+    'en': 'gastronomic-september',
+    'pt': 'setembro-gastronomico',
+    'es': 'septiembre-gastronomico',
+    'de': 'gastronomischer-september',
+    'fr': 'septembre-gastronomique',
 }
+
+# The last path segment, which is what goes in the WordPress slug field and
+# what is_page() matches on. Identical to SLUG while the hub stays top level.
+PAGE_SLUG = {lang: s.rsplit('/', 1)[-1] for lang, s in SLUG.items()}
 
 # Month name used in the eyebrow and the index, in each language.
 MONTH = {'en': 'September', 'pt': 'Setembro', 'es': 'Septiembre',

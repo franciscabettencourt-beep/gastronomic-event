@@ -3,127 +3,92 @@
 Escrito para quem nunca fez isto. Segue pela ordem. Se alguma coisa não bater
 certo com o que vês no ecrã, para e diz, não avances por adivinhação.
 
+**Só precisas de:** utilizador **administrador** no WordPress de vilalara.com.
+Não é preciso acesso ao servidor nem ao alojamento.
+
 **Tempo:** cerca de 20 minutos para a primeira língua, 10 para cada uma das
 outras.
 
-**Antes de começares, precisas de:**
+---
 
-1. Utilizador **administrador** no WordPress de vilalara.com
-2. Acesso ao **painel do alojamento** (cPanel, Plesk ou parecido) ou a um FTP
+## O endereço final
 
-Se não tiveres o número 2, salta para a secção *"E se eu não tiver acesso ao
-alojamento"* no fim.
+Landing page própria, separada da página *Gastronomy* que já existe. É um
+evento, com princípio e fim, não uma secção do site.
+
+| Língua | Endereço do evento |
+|---|---|
+| EN | `/en/gastronomic-september/` |
+| PT | `/pt/setembro-gastronomico/` |
+| ES | `/es/septiembre-gastronomico/` |
+| DE | `/de/gastronomischer-september/` |
+| FR | `/fr/septembre-gastronomique/` |
+
+São duas palavras para não se confundir com a página *Gastronomy*. Um
+`gastronomic` sozinho, ao lado de um `gastronomy`, lê-se como gralha dele.
+
+Cada uma das quatro noites fica por baixo, por exemplo
+`/en/gastronomic-september/fogo/`. Os slugs das noites são sempre `atlantico`,
+`fogo`, `mediterraneo`, `algarve`, em todas as línguas, porque são nomes
+próprios.
+
+São 5 páginas por língua, 25 no total.
 
 ---
 
-# PARTE 1. Carregar as imagens e o CSS
+# PARTE 1. As imagens
 
-Isto faz-se **uma vez só**. Serve as 25 páginas.
+**Já está feito.** As 90 fotografias estão na Biblioteca de Media, e os blocos já
+apontam para lá. Não tens de mexer em nada.
 
-### 1.1
-
-No teu Ambiente de Trabalho tens o ficheiro **`1-CARREGAR-NO-TEMA.zip`**.
-Não o abras nem o descompactes. Vai assim mesmo.
-
-### 1.2
-
-Entra no painel do alojamento e abre o **Gestor de Ficheiros**
-(*File Manager*). É um explorador de pastas dentro do browser.
-
-### 1.3
-
-Navega até à pasta do site. O caminho é quase sempre:
-
-```
-public_html  →  wp-content  →  themes  →  vilalara
-```
-
-Vais ver ficheiros como `style.css`, `functions.php`, `index.php`. Estás no
-sítio certo.
-
-### 1.4
-
-Clica em **Upload** (ou *Carregar*), escolhe o `1-CARREGAR-NO-TEMA.zip`, e
-espera. São 7,5 MB, demora menos de um minuto.
-
-### 1.5
-
-Volta à pasta `vilalara`. Clica com o **botão direito** no zip que acabaste de
-carregar e escolhe **Extract** (ou *Extrair*). Confirma.
-
-### 1.6
-
-Deve ter aparecido uma pasta nova chamada **`gastronomic`**. Abre-a e confirma
-que lá dentro está `assets`, e dentro dessa: `css`, `js`, `img`, `fonts`.
-
-Se estiver assim, **apaga o zip**, já não é preciso.
-
-### 1.7 Confirma que funcionou
-
-Abre isto no browser:
-
-```
-https://vilalara.com/wp-content/themes/vilalara/gastronomic/assets/css/gastronomy-september.css
-```
-
-- Aparece texto a começar por `@charset "UTF-8"` → **certo**, avança
-- Dá erro 404 → a pasta não ficou no sítio. Volta ao 1.3
+> **Porque é que cada foto aparece três vezes?**
+> Cada fotografia existe em três larguras, por exemplo `-400`, `-760` e `-1130`.
+> O browser escolhe sozinho: o telemóvel puxa a pequena, o ecrã grande puxa a
+> maior. É isto que faz a página abrir depressa no telemóvel sem ficar
+> desfocada no portátil. **Não apagues as pequenas.**
 
 ---
 
-# PARTE 2. Dizer ao WordPress para usar esse CSS
+# PARTE 2. O CSS e o JavaScript
 
-O WordPress não sabe que o ficheiro existe. Isto diz-lhe.
+Isto faz-se **uma vez só** e serve as 25 páginas.
 
-**Não vamos mexer no `functions.php`.** Um erro nesse ficheiro deita o site
-abaixo. Usamos um plugin que faz o mesmo com rede de segurança.
+### 2.1 O CSS
 
-### 2.1
+**WPCode → Add Snippet → Add Your Custom Code**
 
-No WordPress: **Plugins → Adicionar novo**. Procura por **Code Snippets**
-(o autor é *Code Snippets Pro*). Instala e ativa.
+- Tipo de código: **CSS Snippet**
+- Título: `Gastronomy September - CSS`
+- Cola o conteúdo do ficheiro `wordpress/snippet-1-css.txt`, inteiro
+- Insert Method: **Auto Insert**
+- Location: **Site Wide Header**
+- **Save Changes**, e liga o interruptor para **Active**
 
-### 2.2
+### 2.2 O JavaScript
 
-Aparece **Snippets** no menu da esquerda. Clica em **Add New**.
+Outro snippet, da mesma maneira:
 
-### 2.3
+- Tipo de código: **JavaScript Snippet**
+- Título: `Gastronomy September - JS`
+- Cola o `wordpress/snippet-2-js.txt`
+- Auto Insert, **Site Wide Footer**
+- Save e Active
 
-Título: `Gastronomic September - CSS e JS`
+### Não te assustes com o "Site Wide"
 
-Na caixa grande de código, cola isto:
+O WPCode Lite não deixa escolher páginas, só site inteiro. Isto quer dizer que o
+CSS carrega em todas as páginas do site, mas **todas as regras estão presas à
+classe `.gs`**, que só existe nestas 25 páginas. O resto do site não é tocado.
+O build tem um teste que rebenta se alguma regra escapar dessa classe.
 
-```php
-add_action( 'wp_enqueue_scripts', function () {
-    $slugs = array( 'gastronomic', 'gastronomico', 'gastronomisch', 'gastronomique',
-                    'atlantico', 'fogo', 'mediterraneo', 'algarve' );
-    if ( ! is_page( $slugs ) ) {
-        return;
-    }
-    $dir = get_stylesheet_directory() . '/gastronomic/assets';
-    $uri = get_stylesheet_directory_uri() . '/gastronomic/assets';
-
-    wp_enqueue_style( 'gastronomy-september', $uri . '/css/gastronomy-september.css',
-        array(), filemtime( $dir . '/css/gastronomy-september.css' ) );
-
-    wp_enqueue_script( 'gastronomy-carousel', $uri . '/js/carousel.js',
-        array(), filemtime( $dir . '/js/carousel.js' ), true );
-}, 20 );
-```
-
-### 2.4
-
-Em baixo, escolhe **Run snippet everywhere**. Depois **Save Changes and
-Activate**.
-
-Se der erro vermelho, não guardou nada e o site continua bem. Manda-me o erro.
+São 21 KB. Não se nota.
 
 ---
 
 # PARTE 3. Criar a primeira página
 
 Vamos fazer **só o inglês** primeiro. Confirmas que está bem, e só depois
-repetes para as outras.
+repetes para as outras quatro.
 
 ### 3.1
 
@@ -131,12 +96,11 @@ repetes para as outras.
 
 ### 3.2
 
-Título: `Gastronomic`
+Título: `Gastronomic September`
 
-### 3.3
+### 3.3 Colar o conteúdo
 
-Agora o passo que mais confunde. Precisas de colar HTML em bruto, não texto
-normal.
+Precisas de colar HTML em bruto, não texto normal.
 
 **Se o editor for o moderno (blocos):**
 
@@ -152,16 +116,22 @@ normal.
 
 ### 3.4
 
-O que colar: abre o ficheiro **`wordpress/en/index.html`** do projeto num
-editor de texto (Bloco de Notas serve), seleciona tudo com `Ctrl+A`, copia com
-`Ctrl+C`, e cola na caixa.
+O que colar: abre o ficheiro **`wordpress/en/index.html`** num editor de texto
+(o Bloco de Notas serve), `Ctrl+A` para selecionar tudo, `Ctrl+C`, e cola na
+caixa.
 
 É o ficheiro inteiro. Não tens de procurar nada lá dentro nem apagar nada.
 
-### 3.5
+### 3.5 O slug
 
 No painel da direita, secção **Ligação permanente** (*Permalink*), confirma que
-o slug é **`gastronomic`**. Se aparecer outra coisa, corrige.
+o slug é **`gastronomic-september`**.
+
+Deixa o campo **Superior** (*Parent*), em Atributos da página, **vazio**. Esta é
+uma página independente, não uma filha da *Gastronomy*.
+
+O endereço mostrado por baixo do título deve ficar
+`vilalara.com/en/gastronomic-september/`.
 
 ### 3.6
 
@@ -174,55 +144,53 @@ manuscrito, uma linha fina, o texto de introdução, e o menu com as quatro noit
 e as datas. A seguir, quatro faixas alternadas com fotografia de um lado e texto
 do outro.
 
-**Se aparecer tudo desalinhado e sem cores**, o CSS não está a carregar. Volta à
-Parte 2 e confirma que o snippet está ativo, e que o slug da página é mesmo um
-dos que estão na lista do código.
+Se aparecer tudo desalinhado e sem cores, o CSS não está a carregar. Volta à
+Parte 2 e confirma que o snippet está mesmo **Active**.
 
 ---
 
 # PARTE 4. As quatro noites
 
-Cada noite é uma página **filha** da que acabaste de criar. É isso que faz o
-endereço ficar `/en/gastronomic/fogo/`.
+Cada noite é uma página **filha da Gastronomic September** que acabaste de
+criar. É isso que faz o endereço ficar `/en/gastronomic-september/fogo/`.
 
 Para cada uma das quatro, repete:
 
 1. **Páginas → Adicionar nova**
-2. Título: `Atlântico` (depois `Fogo`, `Mediterrâneo`, `Algarve`)
+2. Título: `Atlântico`, depois `Fogo`, `Mediterrâneo`, `Algarve`
 3. Bloco **HTML personalizado**, e cola o ficheiro correspondente:
    `wordpress/en/atlantico.html`, `fogo.html`, `mediterraneo.html`,
    `algarve.html`
-4. **No painel da direita**, procura **Atributos da página** (*Page
-   Attributes*). No campo **Superior** (*Parent*), escolhe **Gastronomic**
-5. Confirma que o slug é `atlantico`, `fogo`, `mediterraneo` ou `algarve`
+4. **Atributos da página → Superior**: escolhe **Gastronomic September**
+5. Slug: `atlantico`, `fogo`, `mediterraneo` ou `algarve`. Sem acentos
 6. **Publicar**
 
 ### 4.1 Confirma
 
-Abre `https://vilalara.com/en/gastronomic/` e clica em **More information** numa
-das noites. Deve levar-te à página certa. Lá em baixo, o **Back to events** deve
-trazer-te de volta.
+Abre `https://vilalara.com/en/gastronomic-september/` e clica em **More
+information** numa das noites. Deve levar-te à página certa. Lá em baixo, o
+**Back to events** deve trazer-te de volta.
 
 ---
 
 # PARTE 5. As outras quatro línguas
 
-Repete a Parte 3 e a Parte 4, trocando a pasta e o slug da hub:
+Repete a Parte 3 e a Parte 4, trocando a pasta, o título e o slug:
 
-| Língua | Pasta | Slug da hub |
-|---|---|---|
-| Português | `wordpress/pt/` | `gastronomico` |
-| Espanhol | `wordpress/es/` | `gastronomico` |
-| Alemão | `wordpress/de/` | `gastronomisch` |
-| Francês | `wordpress/fr/` | `gastronomique` |
+| Língua | Pasta dos ficheiros | Título | Slug |
+|---|---|---|---|
+| Português | `wordpress/pt/` | Setembro Gastronómico | `setembro-gastronomico` |
+| Espanhol | `wordpress/es/` | Septiembre Gastronómico | `septiembre-gastronomico` |
+| Alemão | `wordpress/de/` | Gastronomischer September | `gastronomischer-september` |
+| Francês | `wordpress/fr/` | Septembre Gastronomique | `septembre-gastronomique` |
 
-Os slugs das quatro noites são sempre os mesmos: `atlantico`, `fogo`,
-`mediterraneo`, `algarve`.
+O campo **Superior** fica vazio nas cinco hubs. Só as noites é que têm superior.
 
-**Atenção:** ao criar uma página em espanhol, o WordPress tem de estar com o
-idioma espanhol selecionado. No editor, do lado direito, há uma caixa do WPML
-onde escolhes a língua da página. Se não a vires, cria a página normalmente e
-depois usa o passo seguinte para a associar.
+Os slugs das quatro noites são sempre os mesmos em todas as línguas.
+
+**Atenção:** ao criar uma página em espanhol, o WPML tem de estar com o espanhol
+selecionado. No editor, do lado direito, há uma caixa do WPML onde escolhes a
+língua da página.
 
 ---
 
@@ -232,27 +200,11 @@ Sem isto, o seletor de línguas do cabeçalho manda as pessoas para a homepage e
 vez da versão traduzida.
 
 1. **WPML → Gestão de traduções**
-2. Encontra a página `Gastronomic`
-3. Liga-lhe as versões `Gastronómico`, `Gastronomisch` e `Gastronomique` como
-   traduções da mesma página
+2. Encontra a página `Gastronomic September`
+3. Liga-lhe as versões `Setembro Gastronómico`, `Septiembre Gastronómico`,
+   `Gastronomischer September` e `Septembre Gastronomique` como traduções da
+   mesma página
 4. Repete para cada uma das quatro noites
-
----
-
-# E se eu não tiver acesso ao alojamento
-
-A Parte 1 precisa mesmo de alguém que consiga pôr ficheiros no servidor. Sem
-isso, as imagens e o CSS não têm onde viver.
-
-Duas saídas:
-
-- **Pede a quem gere o site.** Manda-lhe o `1-CARREGAR-NO-TEMA.zip` e diz:
-  *"extrair dentro de `/wp-content/themes/vilalara/`, fica uma pasta
-  `gastronomic`"*. São dois minutos de trabalho para quem tem o acesso.
-- **Ou diz-me**, e faço uma versão diferente das páginas em que o CSS vai
-  dentro da própria página e as imagens ficam na Biblioteca de Media do
-  WordPress. Fazes tudo sozinha sem tocar no servidor, mas fica menos limpo e
-  cada alteração de estilo obriga a mexer nas 25 páginas.
 
 ---
 
@@ -260,11 +212,13 @@ Duas saídas:
 
 | O que vês | O que é |
 |---|---|
-| Página sem cores nem alinhamento, texto encostado à esquerda | O CSS não carrega. Parte 2, ou o slug da página não está na lista do snippet |
-| Texto certo mas sem fotografias | A pasta `gastronomic` não ficou no sítio certo. Parte 1.7 |
+| Página sem cores nem alinhamento, texto encostado à esquerda | O snippet do CSS não está Active, ou não ficou em Site Wide Header |
+| Texto certo mas sem fotografias | Alguma imagem foi apagada da Biblioteca de Media |
+| Os pontos do carrossel não fazem nada | Falta o snippet do JavaScript, Parte 2.2 |
+| O endereço fica `/en/gastronomic-september-2/` | Já existe uma página com esse slug. Apaga a antiga do lixo, ou muda o `SLUG` no `content.py` e diz-me |
+| *More information* dá 404 | O slug da noite não é `atlantico`, `fogo`, `mediterraneo` ou `algarve`, ou falta pôr a hub no campo **Superior** |
 | Dois cabeçalhos Vilalara na mesma página | Colaste um ficheiro da pasta errada. Usa sempre os de `wordpress/`, nunca os de `en/` ou `pt/` |
-| O endereço fica `/gastronomic/fogo` sem o `/en/` | Falta o WPML associar a página à língua |
-| Mudei o CSS e não vejo diferença | `Ctrl+Shift+R` no browser. O snippet já usa `filemtime`, que resolve isto sozinho |
+| Mudei o CSS e não vejo diferença | `Ctrl+Shift+R` no browser |
 
 ---
 
@@ -274,7 +228,7 @@ Nada disto impede publicar. Podes fazer tudo agora e completar depois.
 
 - **Botão Menu** aponta para `#`. Falta o link do menu de cada noite
 - **Hora e número de lugares** nos fechos, onde está `[HORA]` e `[N]`
-- **Uma linha sobre cada chef**, onde cozinha hoje
+- **Uma linha sobre cada chef**
 - **Revisão nativa** do espanhol, alemão e francês
 - **Book your table** aponta para o motor de reservas de quartos. Se estes
   jantares se reservam por outra via, é preciso mudar

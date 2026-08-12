@@ -1,29 +1,42 @@
 # Como pôr isto no WordPress
 
 Guia prático para publicar as 25 páginas em vilalara.com, com WPML nas cinco
-línguas. Pressupõe acesso de administrador e FTP ou o gestor de ficheiros do
-alojamento.
+línguas.
+
+> **Este documento descreve a via com acesso ao servidor**, em que os assets
+> vivem no tema. Não é a que está a ser seguida: sem acesso ao alojamento, o
+> CSS e o JS vão em dois snippets do WPCode e as imagens na Biblioteca de
+> Media. **Para publicar, segue o `PASSO-A-PASSO.md`.** Este fica como
+> referência para o dia em que houver acesso, e porque é a via mais limpa.
 
 ---
 
 ## O endereço final
 
-Pediste `vilalara.com/en/gastronomic`. Fica assim:
+A landing page é independente da página *Gastronomy* que já existe. É um evento,
+com data de início e de fim, não uma secção permanente do site. Fica ao primeiro
+nível de cada língua:
 
 | Língua | Hub | Uma noite |
 |---|---|---|
-| EN | `/en/gastronomic/` | `/en/gastronomic/fogo/` |
-| PT | `/pt/gastronomico/` | `/pt/gastronomico/fogo/` |
-| ES | `/es/gastronomico/` | `/es/gastronomico/fogo/` |
-| DE | `/de/gastronomisch/` | `/de/gastronomisch/fogo/` |
-| FR | `/fr/gastronomique/` | `/fr/gastronomique/fogo/` |
+| EN | `/en/gastronomic-september/` | `/en/gastronomic-september/fogo/` |
+| PT | `/pt/setembro-gastronomico/` | `/pt/setembro-gastronomico/fogo/` |
+| ES | `/es/septiembre-gastronomico/` | `/es/septiembre-gastronomico/fogo/` |
+| DE | `/de/gastronomischer-september/` | `/de/gastronomischer-september/fogo/` |
+| FR | `/fr/septembre-gastronomique/` | `/fr/septembre-gastronomique/fogo/` |
 
 São 5 páginas por língua, 25 no total: uma hub e quatro noites.
 
+São duas palavras e não uma pela mesma razão que `gastronomic` foi posto de
+lado: um `gastronomic` sozinho ao lado do `gastronomy` que já existe lê-se como
+gralha dele. Confirmado que os cinco endereços estão livres.
+
 Os slugs das noites (`atlantico`, `fogo`, `mediterraneo`, `algarve`) ficam iguais
-em todas as línguas, porque são nomes próprios. Só o slug da hub é traduzido. Se
-preferires outra coisa, muda o dicionário `SLUG` no topo do `content.py` e corre
-`python build_pages.py` outra vez.
+em todas as línguas, porque são nomes próprios.
+
+Se quiseres outro endereço, muda o dicionário `SLUG` no topo do `content.py` e
+corre os builds outra vez. Não há mais nenhum sítio onde o endereço esteja
+escrito.
 
 ---
 
@@ -93,13 +106,14 @@ entre páginas já apontam para os endereços finais. Não há nada para substit
 Para cada língua, no WordPress:
 
 1. **Páginas → Adicionar nova**
-2. Título: `Gastronomic` (EN), `Gastronómico` (PT), e assim por diante
-3. Slug: o da tabela acima
+2. Título: `Gastronomic September` (EN), `Setembro Gastronómico` (PT), e assim
+   por diante
+3. Slug: o da tabela acima. A hub não tem página **Superior**, é independente
 4. Editor em modo **HTML** ou um bloco **HTML personalizado**
 5. Cola o conteúdo de `wordpress/<lingua>/<pagina>.html`, inteiro
 6. As quatro noites são páginas filhas da hub, para o endereço ficar
-   `/en/gastronomic/fogo/`. No painel lateral, **Atributos da página → Superior**,
-   escolhe a hub
+   `/en/gastronomic-september/fogo/`. No painel lateral, **Atributos da página
+   → Superior**, escolhe a hub
 
 ### Se mudares alguma coisa
 
