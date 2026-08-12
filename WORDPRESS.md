@@ -57,7 +57,8 @@ Se as deixares de fora, apaga também o bloco `@font-face` do topo do
 
 ## Passo 2. Carregar o CSS e o JS
 
-No `functions.php` do tema, ou num plugin de snippets:
+O snippet está pronto em **`wordpress/enqueue.php`**. Cola no `functions.php` do
+tema, ou num plugin de snippets. É este:
 
 ```php
 add_action( 'wp_enqueue_scripts', function () {
@@ -91,6 +92,10 @@ que nos atrasou antes.
 
 ## Passo 3. Criar as páginas
 
+Os blocos já estão prontos em **`wordpress/<lingua>/`**. Cada ficheiro tem só o
+que vai para o editor: os caminhos das imagens já são absolutos e as ligações
+entre páginas já apontam para os endereços finais. Não há nada para substituir.
+
 Para cada língua, no WordPress:
 
 1. **Páginas → Adicionar nova**
@@ -104,22 +109,14 @@ Para cada língua, no WordPress:
    `/en/gastronomic/fogo/`. No painel lateral, **Atributos da página → Superior**,
    escolhe a hub
 
-### Os caminhos das imagens
+### Se mudares alguma coisa
 
-Nos ficheiros estáticos as imagens estão como `../assets/img/...`. Dentro do
-WordPress passam a ser absolutas. Substitui em todo o HTML colado:
+Depois de editares o `content.py`, corre os dois:
 
+```bash
+python build_pages.py       # regenera as 25 páginas estáticas
+python build_wordpress.py   # regenera os 25 blocos para colar
 ```
-../assets/          ->   /wp-content/themes/vilalara/gastronomic/assets/
-```
-
-É um localizar e substituir por página. Se preferires, faço eu essa variante dos
-ficheiros e ficam prontos a colar.
-
-### As ligações entre páginas
-
-Nos ficheiros estáticos apontam para `fogo.html`. No WordPress passam a
-`/en/gastronomic/fogo/`. Mesma lógica de substituição.
 
 ---
 
