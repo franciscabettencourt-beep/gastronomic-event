@@ -1,0 +1,15 @@
+# Approved mockups and any client source documents - keep these out of git.
+# build_assets.py reads the PDFs from wherever they live on disk (VL_MOCKUPS),
+# it does not need them inside the repo.
+*.pdf
+*.docx
+*.xlsx
+
+# OS noise
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc

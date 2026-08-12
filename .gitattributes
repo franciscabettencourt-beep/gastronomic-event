@@ -1,0 +1,10 @@
+# Unlike the Thalasso page, nothing here is an inlined base64 blob - the HTML is
+# generated and readable, so normal diffs are useful. Just normalise endings.
+*.html text eol=lf
+*.css  text eol=lf
+*.js   text eol=lf
+*.py   text eol=lf
+*.md   text eol=lf
+
+*.webp  binary
+*.woff2 binary
