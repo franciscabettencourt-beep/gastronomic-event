@@ -29,12 +29,15 @@
   Array.prototype.forEach.call(document.querySelectorAll('.gs'), function (gs) {
 
     /* The borrowed template wraps the content in a narrow column meant for
-       legal text. The stylesheet undoes it with :has(), and marks it here as
-       well for browsers without :has(). See section 1 of the stylesheet. */
+       legal text, and its stylesheet narrows the <main> around it too. The
+       stylesheet undoes both with :has(), and marks them here as well for
+       browsers without :has(). See section 1 of the stylesheet. */
     var host = gs.parentNode;
     if (host && host.classList && host.classList.contains('content')) {
       host.classList.add('gs-host');
     }
+    var main = gs.closest && gs.closest('main');
+    if (main) main.classList.add('gs-main');
 
     var targets = Array.prototype.slice.call(gs.querySelectorAll('[data-anim]'));
 

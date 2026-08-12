@@ -49,14 +49,67 @@
    H1, and a second one would be a heading-order fault as well as a visual one.
    The page title still does its work in menus, in search and in the tab.
 
-   Two selectors for the same job: :has() where the browser supports it, and a
+   The template also enqueues privacity.min.css, which sizes the <main> itself:
+
+       @media (min-width: 1200px) { main { width: 78.25%; margin-inline: auto } }
+
+   78.25% of 1905 is 1490, which is exactly the column the page came out in.
+   That one has to be undone at <main>, not at the section inside it, along
+   with the 98px it reserves above the first paragraph of a legal document.
+
+   Two selectors for each job: :has() where the browser supports it, and a
    class that carousel.js puts on the same element where it does not. Neither
    can match anywhere else on the site, since both need a .gs on the page. */
+.gs-main,
+main:has(.gs) { width: auto; max-width: none; margin-inline: 0; padding-top: 0; margin-bottom: 0; }
+
 .gs-host,
 .content.container:has(> .gs) { max-width: none; padding: 0; margin-inline: 0; }
 
 .gs-host > .page-title,
 .content.container:has(> .gs) > .page-title { display: none; }
+
+/* The same stylesheet dresses bare elements for a legal document: a Gill Sans
+   body, 14 to 16px paragraphs on a 19px rhythm, and `main ul li` with a "• "
+   marker, which lands on the li and so beats a list-style inherited from the
+   ul. That is what put bullets over the four names in the index row.
+
+   Undone to the values these elements have with no page stylesheet at all,
+   which is what the design was drawn against. :where() keeps the specificity
+   at a single class so the components further down this file, which are also
+   single class, win on source order; anything of mine that is more specific
+   wins outright. */
+.gs :where(p, ul, ol, li, figure, blockquote, h1, h2, h3, h4, h5, h6) {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: none;
+  list-style: none;
+}
+
+/* One of its rules carries a pseudo-class, `main p:not(:last-of-type)`, and so
+   outranks the line above. Matched here rather than raised across the board,
+   which would start outranking the components too. Every paragraph in this
+   design sets its own top margin and leaves the bottom at zero. */
+.gs :where(p):not(:last-of-type) { margin-bottom: 0; }
+
+/* Two Bootstrap utilities the markup uses. The standalone pages pull Bootstrap
+   from a CDN to stand in for the site's own build, but vilalara.com does not
+   ship these two, and without visually-hidden the label meant for screen
+   readers prints inside the button and widens it. Declared here so the markup
+   depends on this file alone. */
+.gs .mx-auto { margin-inline: auto; }
+
+.gs .visually-hidden {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
 
 .gs {
   /* Body copy in the mockups is #231F20. The site sets copy in --color-marron.
@@ -78,6 +131,11 @@
 
   color: var(--color-marron);
   background-color: var(--color-arena-light);
+
+  /* The borrowed template sets Gill Sans on <main>, which every element here
+     that does not name a face would otherwise inherit. Optima is what the site
+     sets on <body> and what this design was drawn against. */
+  font-family: var(--font-optima);
 }
 
 /* No overflow guard on the root here on purpose. `overflow-x: hidden` on <body>

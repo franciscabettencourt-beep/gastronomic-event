@@ -168,7 +168,10 @@ def head(lang, title, description, og_image, page='', extra=''):
 <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/OptimaNovaLTProLight.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/Millionaire-Script.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/GillSansLight.woff2" crossorigin>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+<!-- No Bootstrap. vilalara.com does not ship it, and loading it here made these
+     pages a friendlier place than the one they have to live in: mx-auto and
+     visually-hidden worked in the preview and were missing on the site. Both
+     are declared in the page stylesheet now. -->
 <link rel="stylesheet" href="{THEME}/css/initFonts.min.css">
 <link rel="stylesheet" href="{THEME}/css/main.min.css">
 <link rel="stylesheet" href="../assets/css/gastronomy-september.css?v={asset_version("assets/css/gastronomy-september.css")}">
@@ -259,7 +262,6 @@ def footer():
 </div>
 </div>
 </footer>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
 <script src="{THEME}/js/anim.js" defer></script>
 <script src="../assets/js/carousel.js?v={asset_version("assets/js/carousel.js")}" defer></script>
 <script>addEventListener("load",function(){{setTimeout(function(){{
