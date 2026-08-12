@@ -62,26 +62,20 @@ tema, ou num plugin de snippets. É este:
 
 ```php
 add_action( 'wp_enqueue_scripts', function () {
-    if ( ! is_page_template( 'page-gastronomic.php' ) ) {
-        return;                       // só nestas páginas
+    $slugs = array( 'gastronomic', 'gastronomico', 'gastronomisch', 'gastronomique',
+                    'atlantico', 'fogo', 'mediterraneo', 'algarve' );
+    if ( ! is_page( $slugs ) ) {
+        return;
     }
-    $base = get_stylesheet_directory_uri() . '/gastronomic/assets';
-    $ver  = filemtime( get_stylesheet_directory() . '/gastronomic/assets/css/gastronomy-september.css' );
+    $dir = get_stylesheet_directory() . '/gastronomic/assets';
+    $uri = get_stylesheet_directory_uri() . '/gastronomic/assets';
 
-    wp_enqueue_style(
-        'gastronomy-september',
-        $base . '/css/gastronomy-september.css',
-        array( 'main' ),              // depois do main.min.css do tema
-        $ver                          // muda sozinho quando editares o ficheiro
-    );
-    wp_enqueue_script(
-        'gastronomy-carousel',
-        $base . '/js/carousel.js',
-        array(),
-        filemtime( get_stylesheet_directory() . '/gastronomic/assets/js/carousel.js' ),
-        true
-    );
-} );
+    wp_enqueue_style( 'gastronomy-september', $uri . '/css/gastronomy-september.css',
+        array(), filemtime( $dir . '/css/gastronomy-september.css' ) );
+
+    wp_enqueue_script( 'gastronomy-carousel', $uri . '/js/carousel.js',
+        array(), filemtime( $dir . '/js/carousel.js' ), true );
+}, 20 );
 ```
 
 O `filemtime` como versão é o equivalente ao `?v=` que os ficheiros estáticos já
@@ -102,9 +96,7 @@ Para cada língua, no WordPress:
 2. Título: `Gastronomic` (EN), `Gastronómico` (PT), e assim por diante
 3. Slug: o da tabela acima
 4. Editor em modo **HTML** ou um bloco **HTML personalizado**
-5. Cola **apenas o que está entre `<main id="main">` e `</main>`** do ficheiro
-   correspondente. O `<header>` e o `<footer>` são do tema e já existem: se
-   colares o ficheiro inteiro ficas com dois cabeçalhos
+5. Cola o conteúdo de `wordpress/<lingua>/<pagina>.html`, inteiro
 6. As quatro noites são páginas filhas da hub, para o endereço ficar
    `/en/gastronomic/fogo/`. No painel lateral, **Atributos da página → Superior**,
    escolhe a hub
