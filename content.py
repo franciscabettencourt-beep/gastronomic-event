@@ -313,6 +313,24 @@ CLOSE = {
 # one characteristic of their work. Until it arrives these two lines are used,
 # which are true of every chef and assert nothing.
 
+# One note per chef, in each language. Two to three short sentences: the box is
+# 310px wide in Gill Sans at 16px, so roughly 150 to 200 characters before it
+# runs past the portrait above it. Say where they cook and one thing that is
+# theirs. Not a CV.
+#
+# A chef left out here, or left empty, falls back to the generic line below.
+# Nothing breaks; the page just says less.
+CHEF_NOTE = {
+    'diogo-pereira':   {},
+    'joao-viegas':     {},
+    'telmo-pires':     {},
+    'alexandre-silva': {},
+    'ricardo-lucas':   {},
+    'stefano-bula':    {},
+    'louis-anjos':     {},
+}
+
+# The fallback, and what every chef says until CHEF_NOTE is filled in.
 CHEF_NOTE_RESIDENT = {
     'en': "At Vilalara every day of the year.",
     'pt': "No Vilalara todos os dias do ano.",

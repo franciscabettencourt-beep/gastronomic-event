@@ -35,6 +35,9 @@ CHEFS = {
 # The three chefs who hold Vilalara's own kitchens; everyone else is a guest.
 RESIDENTS = {'diogo-pereira', 'telmo-pires', 'ricardo-lucas'}
 
+# Chefs still on the generic line, collected while building so the run can say so.
+_GENERIC = set()
+
 EVENTS = [
     {'slug': 'atlantico', 'title': 'Atlântico', 'venue': 'Coral', 'day': 4,
      'hero_y': '66%', 'guest': 'joao-viegas',
@@ -286,11 +289,13 @@ def chef_grid(keys, lang):
     sizes = '(max-width:767px) 84vw, (max-width:1024px) 40vw, 20vw'
     items = ''
     for i, k in enumerate(keys):
-        note = C.CHEF_NOTE_RESIDENT[lang] if k in RESIDENTS else C.CHEF_NOTE_GUEST[lang]
+        note = C.CHEF_NOTE.get(k, {}).get(lang, '').strip()
+        if not note:
+            note = C.CHEF_NOTE_RESIDENT[lang] if k in RESIDENTS else C.CHEF_NOTE_GUEST[lang]
+            _GENERIC.add(k)
         items += (f'<li class="gs-chef" data-anim="fade" data-anim-delay="{i * 110}">'
                   f'{media(f"chef-{k}", CHEFS[k][1], sizes)}'
                   f'<h3 class="gs-chef__name">{esc(CHEFS[k][0])}</h3>'
-                  f'<!-- COPY: falta uma linha de facto por chef, ver content.py -->'
                   f'<p class="gs-chef__bio">{esc(note)}</p></li>')
     return f'<ul class="gs-chef-grid" data-count="{len(keys)}">{items}</ul>'
 
@@ -484,3 +489,8 @@ if __name__ == '__main__':
     open(os.path.join(HERE, '.nojekyll'), 'w').close()
     print('  index.html    redireciona para a lingua do visitante')
     print(f'\n{len(C.LANGS) * 5} paginas, {total / 1024:.0f} KB')
+
+    if _GENERIC:
+        print('\nAVISO  chefs ainda com a frase generica: '
+              + ', '.join(sorted(_GENERIC)))
+        print('       preencher CHEF_NOTE no content.py, 150 a 200 caracteres cada')
