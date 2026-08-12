@@ -488,11 +488,16 @@ a:focus-visible > .gs-media img,
 
 /* Per evening: where the arena band crosses, and the drop to the dots. Each
    artboard holds the band at the same absolute height over a differently sized
-   section, so the crossings are percentages of the block the band spans. */
-[data-evening="atlantico"]    { --gs-band-top: 28.44%; --gs-band-bottom: 22.59%; --gs-dots-mt: clamp(28px, 2.760vw, 53px); }
-[data-evening="fogo"]         { --gs-band-top: 28.43%; --gs-band-bottom: 22.68%; --gs-dots-mt: clamp(28px, 2.813vw, 54px); }
-[data-evening="mediterraneo"] { --gs-band-top: 32.97%; --gs-band-bottom: 10.28%; --gs-dots-mt: clamp(36px, 3.646vw, 70px); }
-[data-evening="algarve"]      { --gs-band-top: 28.63%; --gs-band-bottom: 17.91%; --gs-dots-mt: clamp(42px, 4.167vw, 80px); }
+   section, so the crossings are percentages of the block the band spans.
+   Re-derived at 1920 when the chef notes grew from one line to five or six:
+   the section got about 110px taller, which slid the band roughly 30px down
+   the portraits and pulled its lower edge 25px out of the carousel. The
+   percentages below put both crossings back on the pixels the artboards drew.
+   Any further change to the length of those notes moves them again. */
+[data-evening="atlantico"]    { --gs-band-top: 26.84%; --gs-band-bottom: 21.32%; --gs-dots-mt: clamp(28px, 2.760vw, 53px); }
+[data-evening="fogo"]         { --gs-band-top: 27.08%; --gs-band-bottom: 21.60%; --gs-dots-mt: clamp(28px, 2.813vw, 54px); }
+[data-evening="mediterraneo"] { --gs-band-top: 31.17%; --gs-band-bottom:  9.72%; --gs-dots-mt: clamp(36px, 3.646vw, 70px); }
+[data-evening="algarve"]      { --gs-band-top: 27.04%; --gs-band-bottom: 16.91%; --gs-dots-mt: clamp(42px, 4.167vw, 80px); }
 
 /* ============================== 7. HUB PAGE ============================== */
 
@@ -707,6 +712,11 @@ a:focus-visible > .gs-media img,
   .gs-slide .gs-media { border-radius: 14px; }
 
   .gs-field::before { top: 22%; bottom: 22%; }
+
+  /* Algarve stacks four chefs where the others stack two, so its column is far
+     taller and the flat 22% left the last note sitting outside the band on a
+     narrow phone. Only that page needs the lower edge carried further down. */
+  .gs-field[data-chefs="4"]::before { bottom: 19%; }
 
   .gs-event { grid-template-columns: 1fr; min-height: 0; }
   .gs-event__media { aspect-ratio: 4 / 3; }

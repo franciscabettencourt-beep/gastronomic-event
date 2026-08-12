@@ -321,13 +321,154 @@ CLOSE = {
 # A chef left out here, or left empty, falls back to the generic line below.
 # Nothing breaks; the page just says less.
 CHEF_NOTE = {
-    'diogo-pereira':   {},
-    'joao-viegas':     {},
-    'telmo-pires':     {},
-    'alexandre-silva': {},
-    'ricardo-lucas':   {},
-    'stefano-bula':    {},
-    'louis-anjos':     {},
+    'diogo-pereira': {
+        'en': "At Vilalara every day of the year, Diogo Pereira brings the Atlantic "
+              "to the table. His cuisine celebrates the Algarve through its finest "
+              "produce, seasonality and a deep connection to the sea, a philosophy "
+              "recognised by the MICHELIN Guide Portugal 2026.",
+        'pt': "No Vilalara todos os dias do ano, Diogo Pereira traz o Atlântico à "
+              "mesa. A sua cozinha celebra o Algarve pelo melhor produto, pela "
+              "estação do ano e por uma ligação profunda ao mar, uma filosofia "
+              "reconhecida pelo Guia MICHELIN Portugal 2026.",
+        'es': "En Vilalara todos los días del año, Diogo Pereira lleva el Atlántico "
+              "a la mesa. Su cocina celebra el Algarve a través del mejor producto, "
+              "la temporada y un vínculo profundo con el mar, una filosofía "
+              "reconocida por la Guía MICHELIN Portugal 2026.",
+        'de': "Das ganze Jahr über bei Vilalara bringt Diogo Pereira den Atlantik "
+              "auf den Tisch. Seine Küche feiert die Algarve mit bestem Produkt, mit "
+              "der Jahreszeit und mit einer tiefen Verbindung zum Meer, eine Haltung, "
+              "die der Guide MICHELIN Portugal 2026 auszeichnet.",
+        'fr': "Chez Vilalara tous les jours de l'année, Diogo Pereira porte "
+              "l'Atlantique à table. Sa cuisine célèbre l'Algarve par le meilleur "
+              "produit, par la saison et par un lien profond à la mer, une démarche "
+              "distinguée par le Guide MICHELIN Portugal 2026.",
+    },
+    'telmo-pires': {
+        'en': "Rooted in the Algarve and guided by the fire, Telmo Pires celebrates "
+              "the flavours of the land. At Raízes, local produce, tradition and the "
+              "warmth of the flame come together in a cuisine made to be shared.",
+        'pt': "Com raízes no Algarve e guiado pelo fogo, Telmo Pires celebra os "
+              "sabores da terra. No Raízes, o produto local, a tradição e o calor da "
+              "chama juntam-se numa cozinha feita para partilhar.",
+        'es': "Con raíces en el Algarve y guiado por el fuego, Telmo Pires celebra "
+              "los sabores de la tierra. En Raízes, el producto local, la tradición y "
+              "el calor de la llama se unen en una cocina hecha para compartir.",
+        'de': "In der Algarve verwurzelt und vom Feuer geführt, feiert Telmo Pires "
+              "die Aromen des Landes. Im Raízes verbinden sich regionales Produkt, "
+              "Tradition und die Wärme der Flamme zu einer Küche zum Teilen.",
+        'fr': "Enraciné en Algarve et guidé par le feu, Telmo Pires célèbre les "
+              "saveurs de la terre. Au Raízes, le produit local, la tradition et la "
+              "chaleur de la flamme composent une cuisine faite pour être partagée.",
+    },
+    'ricardo-lucas': {
+        'en': "From Italy to the Algarve, Ricardo Lucas brings the soul of the "
+              "Italian table to Vilalara. At Trattoria Pantaleone, tradition, "
+              "simplicity and generous flavours create an experience made for "
+              "gathering.",
+        'pt': "De Itália para o Algarve, Ricardo Lucas traz a alma da mesa italiana "
+              "ao Vilalara. Na Trattoria Pantaleone, a tradição, a simplicidade e os "
+              "sabores generosos criam uma experiência feita para reunir.",
+        'es': "De Italia al Algarve, Ricardo Lucas trae el alma de la mesa italiana "
+              "a Vilalara. En Trattoria Pantaleone, la tradición, la sencillez y los "
+              "sabores generosos crean una experiencia hecha para reunirse.",
+        'de': "Von Italien an die Algarve bringt Ricardo Lucas die Seele der "
+              "italienischen Tafel nach Vilalara. In der Trattoria Pantaleone werden "
+              "Tradition, Einfachheit und großzügige Aromen zu einem Abend, der "
+              "Menschen zusammenführt.",
+        'fr': "D'Italie à l'Algarve, Ricardo Lucas apporte l'âme de la table "
+              "italienne à Vilalara. À la Trattoria Pantaleone, tradition, simplicité "
+              "et saveurs généreuses composent une soirée faite pour se réunir.",
+    },
+    'joao-viegas': {
+        'en': "For one evening, João Viegas brings his own interpretation of the "
+              "Algarve to Vilalara. With an internationally shaped career and a "
+              "MICHELIN Guide Portugal 2026 recommendation, his cuisine brings "
+              "together local ingredients, contemporary technique and a deep sense "
+              "of place.",
+        'pt': "Por uma noite, João Viegas traz ao Vilalara a sua leitura do Algarve. "
+              "Com um percurso construído lá fora e uma recomendação do Guia MICHELIN "
+              "Portugal 2026, a sua cozinha junta produto local, técnica "
+              "contemporânea e um sentido profundo do lugar.",
+        'es': "Por una noche, João Viegas trae a Vilalara su propia lectura del "
+              "Algarve. Con una carrera forjada fuera y una recomendación de la Guía "
+              "MICHELIN Portugal 2026, su cocina reúne producto local, técnica "
+              "contemporánea y un hondo sentido del lugar.",
+        'de': "Für einen Abend bringt João Viegas seine eigene Lesart der Algarve "
+              "nach Vilalara. Mit international geprägtem Werdegang und einer "
+              "Empfehlung des Guide MICHELIN Portugal 2026 verbindet seine Küche "
+              "regionales Produkt, zeitgenössische Technik und ein tiefes Gespür für "
+              "den Ort.",
+        'fr': "Le temps d'une soirée, João Viegas apporte à Vilalara sa lecture de "
+              "l'Algarve. Fort d'un parcours international et d'une recommandation du "
+              "Guide MICHELIN Portugal 2026, sa cuisine réunit produit local, "
+              "technique contemporaine et sens profond du lieu.",
+    },
+    'alexandre-silva': {
+        'en': "With fire at its heart, Alexandre Silva explores the depth and "
+              "character of Portuguese cuisine. A MICHELIN-starred chef, he brings to "
+              "Vilalara a cuisine shaped by fire, exceptional Portuguese produce and "
+              "a deep connection to tradition.",
+        'pt': "Com o fogo no centro, Alexandre Silva explora a profundidade e o "
+              "carácter da cozinha portuguesa. Chef com estrela MICHELIN, traz ao "
+              "Vilalara uma cozinha feita de fogo, de produto português de exceção e "
+              "de uma ligação profunda à tradição.",
+        'es': "Con el fuego en el centro, Alexandre Silva explora la hondura y el "
+              "carácter de la cocina portuguesa. Chef con estrella MICHELIN, trae a "
+              "Vilalara una cocina de fuego, de producto portugués excepcional y de "
+              "profundo apego a la tradición.",
+        'de': "Mit dem Feuer im Zentrum erkundet Alexandre Silva die Tiefe und den "
+              "Charakter der portugiesischen Küche. Der mit einem MICHELIN Stern "
+              "ausgezeichnete Koch bringt nach Vilalara eine Küche aus Feuer, "
+              "herausragendem portugiesischem Produkt und tiefer Verbundenheit mit "
+              "der Tradition.",
+        'fr': "Le feu au cœur, Alexandre Silva explore la profondeur et le caractère "
+              "de la cuisine portugaise. Chef étoilé au Guide MICHELIN, il apporte à "
+              "Vilalara une cuisine de flamme, de produit portugais d'exception et "
+              "d'attachement à la tradition.",
+    },
+    'louis-anjos': {
+        'en': "For Louis Anjos, the Algarve is more than a place, it is a source of "
+              "inspiration. A MICHELIN-starred chef, his cuisine reflects the sea, "
+              "land and traditions of the region, reimagined through a contemporary "
+              "and deeply personal lens.",
+        'pt': "Para Louis Anjos, o Algarve é mais do que um lugar, é uma fonte de "
+              "inspiração. Chef com estrela MICHELIN, a sua cozinha reflete o mar, a "
+              "terra e as tradições da região, reinventados por um olhar "
+              "contemporâneo e muito pessoal.",
+        'es': "Para Louis Anjos, el Algarve es más que un lugar, es una fuente de "
+              "inspiración. Chef con estrella MICHELIN, su cocina refleja el mar, la "
+              "tierra y las tradiciones de la región, reinterpretados con una mirada "
+              "contemporánea y muy personal.",
+        'de': "Für Louis Anjos ist die Algarve mehr als ein Ort, sie ist eine Quelle "
+              "der Inspiration. Der mit einem MICHELIN Stern ausgezeichnete Koch "
+              "spiegelt Meer, Land und Traditionen der Region in einer "
+              "zeitgenössischen, sehr persönlichen Handschrift.",
+        'fr': "Pour Louis Anjos, l'Algarve est plus qu'un lieu, c'est une source "
+              "d'inspiration. Chef étoilé au Guide MICHELIN, sa cuisine reflète la "
+              "mer, la terre et les traditions de la région, réinventées par un "
+              "regard contemporain et très personnel.",
+    },
+    'stefano-bula': {
+        'en': "Stefano Bula brings the precision of Italian fine dining to the "
+              "Mediterranean. Head Chef of Gusto by Heinz Beck, a MICHELIN-starred "
+              "restaurant, his cuisine balances technique, lightness and exceptional "
+              "seasonal produce.",
+        'pt': "Stefano Bula traz ao Mediterrâneo a precisão da alta cozinha italiana. "
+              "Chef executivo do Gusto by Heinz Beck, restaurante com estrela "
+              "MICHELIN, equilibra técnica, leveza e produto de época de exceção.",
+        'es': "Stefano Bula lleva al Mediterráneo la precisión de la alta cocina "
+              "italiana. Chef ejecutivo de Gusto by Heinz Beck, restaurante con "
+              "estrella MICHELIN, equilibra técnica, ligereza y producto de temporada "
+              "excepcional.",
+        'de': "Stefano Bula bringt die Präzision der italienischen Spitzenküche ans "
+              "Mittelmeer. Als Küchenchef des Gusto by Heinz Beck, ausgezeichnet mit "
+              "einem MICHELIN Stern, verbindet er Technik, Leichtigkeit und "
+              "herausragendes Saisonprodukt.",
+        'fr': "Stefano Bula apporte à la Méditerranée la précision de la haute "
+              "cuisine italienne. Chef exécutif du Gusto by Heinz Beck, restaurant "
+              "étoilé au Guide MICHELIN, il allie technique, légèreté et produit de "
+              "saison d'exception.",
+    },
 }
 
 # The fallback, and what every chef says until CHEF_NOTE is filled in.
