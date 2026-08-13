@@ -42,7 +42,9 @@ MONTH = {'en': 'September', 'pt': 'Setembro', 'es': 'Septiembre',
 
 UI = {
     'en': {'kicker': 'Gastronomy', 'chefs': 'Chefs', 'fusion': 'Culinary fusion',
-           'invite': 'Invite chef', 'more': 'More information',
+           # "Guest chef", not the mockup's "Invite chef": invite is the verb.
+           # The other four languages had it right all along.
+           'invite': 'Guest chef', 'more': 'More information',
            'book': 'Book your table', 'book_short': 'Book', 'menu': 'Menu', 'back': 'Back to events',
            'index_label': 'The four evenings', 'dishes': 'dishes',
            'skip': 'Skip to content', 'dish_of': 'Dish %d of %d'},
