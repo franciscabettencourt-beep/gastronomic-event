@@ -63,6 +63,17 @@
 .gs-main,
 main:has(.gs) { width: auto; max-width: none; margin-inline: 0; padding-top: 0; margin-bottom: 0; }
 
+/* The theme leaves 19px between the end of <main> and the top of the footer.
+   On its own pages that sits inside the 70px of air privacity.min.css gives
+   the main, and reads as spacing. Here the page ends on a full bleed
+   photograph, the 70px is undone above, and what is left shows as a pale strip
+   under the last row. It survives zeroed margins on both boxes and is not a
+   line box, so rather than chase it with a magic negative margin the seam is
+   simply given the footer's colour: it then reads as the footer beginning a
+   few pixels earlier, which is what it looks like anyway. Every other part of
+   the body is covered by the header, the block or the footer. */
+body:has(.gs) { background-color: var(--color-arena); }
+
 /* Matched on a descendant rather than a child. A block pasted over an older one
    can end up wrapped in stray markup, and a single unclosed tag is enough to
    put the .gs a level deeper than expected. When that happened the child
@@ -474,18 +485,25 @@ a:focus-visible > .gs-media img,
   --gs-chefs-pb:     clamp(81px, 10.052vw, 193px);
 }
 
-/* Per evening: where the arena band crosses, and the drop to the dots. Each
-   artboard holds the band at the same absolute height over a differently sized
-   section, so the crossings are percentages of the block the band spans.
-   Re-derived at 1920 when the chef notes grew from one line to five or six:
-   the section got about 110px taller, which slid the band roughly 30px down
-   the portraits and pulled its lower edge 25px out of the carousel. The
-   percentages below put both crossings back on the pixels the artboards drew.
-   Any further change to the length of those notes moves them again. */
-[data-evening="atlantico"]    { --gs-band-top: 26.84%; --gs-band-bottom: 21.32%; --gs-dots-mt: clamp(28px, 2.760vw, 53px); }
-[data-evening="fogo"]         { --gs-band-top: 27.08%; --gs-band-bottom: 21.60%; --gs-dots-mt: clamp(28px, 2.813vw, 54px); }
-[data-evening="mediterraneo"] { --gs-band-top: 31.17%; --gs-band-bottom:  9.72%; --gs-dots-mt: clamp(36px, 3.646vw, 70px); }
-[data-evening="algarve"]      { --gs-band-top: 27.04%; --gs-band-bottom: 16.91%; --gs-dots-mt: clamp(42px, 4.167vw, 80px); }
+/* Per evening: where the arena band crosses. Each artboard holds the band at
+   the same absolute height over a differently sized section, so the crossings
+   are percentages of the block the band spans.
+
+   Re-derived twice. First when the chef notes grew from one line to five or
+   six. Then when the carousel was dropped for want of photographs, which
+   halved the block the band spans: the same percentages then put its upper
+   edge 55px into the portraits instead of 296, and its lower edge above the
+   notes rather than below them.
+
+   The top still lands on the pixel the artboards drew, 296px down the
+   portrait and 308 on Algarve, whose row is shorter. The bottom is now 0: with
+   nothing below the portraits to end inside, the band simply runs to the end
+   of the section, and the section's own bottom padding gives it the air the
+   carousel used to. */
+[data-evening="atlantico"]    { --gs-band-top: 46.15%; --gs-band-bottom: 0%; }
+[data-evening="fogo"]         { --gs-band-top: 46.91%; --gs-band-bottom: 0%; }
+[data-evening="mediterraneo"] { --gs-band-top: 46.91%; --gs-band-bottom: 0%; }
+[data-evening="algarve"]      { --gs-band-top: 47.08%; --gs-band-bottom: 0%; }
 
 /* ============================== 7. HUB PAGE ============================== */
 
@@ -680,6 +698,11 @@ a:focus-visible > .gs-media img,
   .gs-chef-grid[data-count="4"] { --gs-cols: 2; --gs-chef-gap: 64px; --gs-chef-max: 560px; }
   .gs-carousel { --gs-slides: 2.2; --gs-slide-gap: 24px; }
 
+  /* Algarve breaks to two rows of two here, which roughly doubles the block
+     the band is measured against. Without this its upper edge would fall below
+     the first portrait instead of a little way into it. */
+  .gs-field[data-chefs="4"]::before { top: 21%; }
+
   .gs-index ul { gap: 4px 48px; }
   .gs-event__body { padding-block: clamp(48px, 7vw, 80px); }
 }
@@ -699,12 +722,14 @@ a:focus-visible > .gs-media img,
   .gs-carousel__track { padding-inline: 2px; }
   .gs-slide .gs-media { border-radius: 14px; }
 
-  .gs-field::before { top: 22%; bottom: 22%; }
-
-  /* Algarve stacks four chefs where the others stack two, so its column is far
-     taller and the flat 22% left the last note sitting outside the band on a
-     narrow phone. Only that page needs the lower edge carried further down. */
-  .gs-field[data-chefs="4"]::before { bottom: 19%; }
+  /* On a phone the portraits stack, so the band starts a little way into the
+     first one and runs to the end of the section, the same shape the desktop
+     has. Algarve stacks four where the others stack two, so the same
+     percentage of a column twice as tall would start the band below the first
+     portrait entirely. Halved for that page, which puts both at the same point
+     of the same photograph. */
+  .gs-field::before                 { top: 21%; bottom: 0; }
+  .gs-field[data-chefs="4"]::before { top: 11.6%; }
 
   .gs-event { grid-template-columns: 1fr; min-height: 0; }
   .gs-event__media { aspect-ratio: 4 / 3; }

@@ -364,12 +364,6 @@ def build_event(ev, lang):
 {chef_grid(ev['chefs'], lang)}
 </section>
 
-<section class="gs-fusion gs-shell" aria-labelledby="fusion-{ev['slug']}">
-<hr class="gs-rule">
-<h2 class="gs-display gs-display--section" id="fusion-{ev['slug']}" data-anim="fade">{esc(ui['fusion'])}</h2>
-{carousel(ev['dishes'], ev['title'] + ', ' + ui['dishes'], lang)}
-</section>
-
 </div>
 
 <section class="gs-outro gs-shell" data-anim="fade">
