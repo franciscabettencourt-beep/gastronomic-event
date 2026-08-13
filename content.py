@@ -259,22 +259,19 @@ INTRO = {
 # hotel already uses for it on the site. The hour and the number can be added
 # later without touching anything else.
 CLOSE = {
+    # Atlântico stops at the date, by the client's decision. The other three
+    # still carry the concierge and the number; say the word and they follow.
     'atlantico': {
         'en': "At Coral Éden do Mar the Atlantic sets the menu, and restraint does the "
-              "rest. One evening only, on 4 September. Reserve through the concierge or "
-              "on (+351) 282 320 000.",
+              "rest. One evening only, on 4 September.",
         'pt': "No Coral Éden do Mar é o Atlântico que faz a ementa, e a contenção faz o "
-              "resto. Uma só noite, a 4 de setembro. Reserve pelo concierge ou por "
-              "(+351) 282 320 000.",
+              "resto. Uma só noite, a 4 de setembro.",
         'es': "En Coral Éden do Mar es el Atlántico quien decide el menú, y la contención "
-              "hace el resto. Una sola noche, el 4 de septiembre. Reserve por el "
-              "concierge o en (+351) 282 320 000.",
+              "hace el resto. Una sola noche, el 4 de septiembre.",
         'de': "Im Coral Éden do Mar schreibt der Atlantik die Karte, den Rest macht die "
-              "Zurückhaltung. Nur ein Abend, am 4. September. Reservierung über den "
-              "Concierge oder unter (+351) 282 320 000.",
+              "Zurückhaltung. Nur ein Abend, am 4. September.",
         'fr': "Au Coral Éden do Mar, c'est l'Atlantique qui écrit la carte, la retenue "
-              "fait le reste. Une seule soirée, le 4 septembre. Réservez auprès du "
-              "concierge ou au (+351) 282 320 000.",
+              "fait le reste. Une seule soirée, le 4 septembre.",
     },
     'fogo': {
         'en': "Raízes stands on three things: the produce, the fire, and the long table "
