@@ -301,19 +301,21 @@ def chef_grid(keys, lang):
 
 
 def carousel(dishes, label, lang):
+    """The four dishes, in a row that still scrolls but shows no dots.
+
+    The track is a native scroll-snap row, so it swipes on touch, scrolls with a
+    trackpad, and takes arrow keys when focused, with or without any script. The
+    dots were only ever a second way to do the same thing, and they are gone by
+    request. tabindex and the label stay: without the dots, the keyboard needs
+    the track itself to be reachable.
+    """
     sizes = '(max-width:767px) 78vw, (max-width:1024px) 44vw, 20vw'
     slides = ''.join(
         f'<li class="gs-slide" id="slide-{i + 1}">{media(s, a, sizes, delay=i * 110)}</li>'
         for i, (s, a) in enumerate(dishes))
-    dots = ''
-    for i in range(len(dishes)):
-        current = ' aria-current="true"' if i == 0 else ''
-        label_i = esc(C.UI[lang]['dish_of'] % (i + 1, len(dishes)))
-        dots += (f'<button type="button" class="gs-dot" aria-controls="slide-{i + 1}"{current}>'
-                 f'<span class="visually-hidden">{label_i}</span></button>')
-    return (f'<div class="gs-carousel" data-carousel>'
+    return (f'<div class="gs-carousel">'
             f'<ul class="gs-carousel__track" tabindex="0" aria-label="{esc(label)}">{slides}</ul>'
-            f'<div class="gs-carousel__dots">{dots}</div></div>')
+            f'</div>')
 
 
 def event_schema(ev, lang):
@@ -362,6 +364,12 @@ def build_event(ev, lang):
 <hr class="gs-rule">
 <h2 class="gs-display gs-display--section" id="chefs-{ev['slug']}" data-anim="fade">{esc(ui['chefs'])}</h2>
 {chef_grid(ev['chefs'], lang)}
+</section>
+
+<section class="gs-fusion gs-shell" aria-labelledby="fusion-{ev['slug']}">
+<hr class="gs-rule">
+<h2 class="gs-display gs-display--section" id="fusion-{ev['slug']}" data-anim="fade">{esc(ui['fusion'])}</h2>
+{carousel(ev['dishes'], ev['title'] + ', ' + ui['dishes'], lang)}
 </section>
 
 </div>
