@@ -133,15 +133,15 @@ ROW = {
               "mains avec Telmo Pires sur feu vif, le geste le plus ancien de la cuisine.",
     },
     'mediterraneo': {
-        'en': "Simplicity as a destination. At Trattoria, Stefano Bula cooks four hands "
+        'en': "Simplicity as a destination. At Trattoria, Stefano Bulla cooks four hands "
               "with Ricardo Lucas, with pasta by hand, olive oil and ripe tomato.",
-        'pt': "A simplicidade como ponto de chegada. Na Trattoria, Stefano Bula cozinha a "
+        'pt': "A simplicidade como ponto de chegada. Na Trattoria, Stefano Bulla cozinha a "
               "quatro mãos com Ricardo Lucas, com massa à mão, azeite e tomate maduro.",
-        'es': "La simplicidad como destino. En Trattoria, Stefano Bula cocina a cuatro "
+        'es': "La simplicidad como destino. En Trattoria, Stefano Bulla cocina a cuatro "
               "manos con Ricardo Lucas, con pasta a mano, aceite de oliva y tomate maduro.",
-        'de': "Einfachheit als Ziel. In der Trattoria kocht Stefano Bula vierhändig mit "
+        'de': "Einfachheit als Ziel. In der Trattoria kocht Stefano Bulla vierhändig mit "
               "Ricardo Lucas, mit handgemachter Pasta, Olivenöl und reifer Tomate.",
-        'fr': "La simplicité comme destination. À la Trattoria, Stefano Bula cuisine à "
+        'fr': "La simplicité comme destination. À la Trattoria, Stefano Bulla cuisine à "
               "quatre mains avec Ricardo Lucas, pâtes à la main, huile d'olive et tomate.",
     },
     'algarve': {
@@ -210,23 +210,23 @@ INTRO = {
     },
     'mediterraneo': {
         'en': "Simplicity as a destination, not a starting point. At the Trattoria, Stefano "
-              "Bula cooks four hands with Ricardo Lucas, the guest and the head chef at the "
+              "Bulla cooks four hands with Ricardo Lucas, the guest and the head chef at the "
               "same pass. Pasta made by hand, olive oil and ripe tomato. Few ingredients, "
               "when they are the right ones.",
         'pt': "A simplicidade como ponto de chegada, não de partida. Na Trattoria, Stefano "
-              "Bula cozinha a quatro mãos com Ricardo Lucas, o convidado e o chef da casa "
+              "Bulla cozinha a quatro mãos com Ricardo Lucas, o convidado e o chef da casa "
               "no mesmo passe. Massa feita à mão, azeite e tomate maduro. Poucos "
               "ingredientes, quando são os certos.",
         'es': "La simplicidad como punto de llegada, no de partida. En la Trattoria, "
-              "Stefano Bula cocina a cuatro manos con Ricardo Lucas, el invitado y el chef "
+              "Stefano Bulla cocina a cuatro manos con Ricardo Lucas, el invitado y el chef "
               "de la casa en el mismo pase. Pasta hecha a mano, aceite de oliva y tomate "
               "maduro. Pocos ingredientes, cuando son los correctos.",
         'de': "Einfachheit als Ziel, nicht als Ausgangspunkt. In der Trattoria kocht "
-              "Stefano Bula vierhändig mit Ricardo Lucas, der Gast und der Küchenchef am "
+              "Stefano Bulla vierhändig mit Ricardo Lucas, der Gast und der Küchenchef am "
               "selben Pass. Handgemachte Pasta, Olivenöl und reife Tomate. Wenige Zutaten, "
               "wenn es die richtigen sind.",
         'fr': "La simplicité comme point d'arrivée, non de départ. À la Trattoria, Stefano "
-              "Bula cuisine à quatre mains avec Ricardo Lucas, l'invité et le chef de la "
+              "Bulla cuisine à quatre mains avec Ricardo Lucas, l'invité et le chef de la "
               "maison au même passe. Pâtes faites à la main, huile d'olive et tomate mûre. "
               "Peu d'ingrédients, quand ce sont les bons.",
     },
@@ -458,22 +458,22 @@ CHEF_NOTE = {
               "regard contemporain et très personnel.",
     },
     'stefano-bula': {
-        'en': "Stefano Bula brings the precision of Italian fine dining to the "
+        'en': "Stefano Bulla brings the precision of Italian fine dining to the "
               "Mediterranean. Head Chef of Gusto by Heinz Beck, a MICHELIN-starred "
               "restaurant, his cuisine balances technique, lightness and exceptional "
               "seasonal produce.",
-        'pt': "Stefano Bula traz ao Mediterrâneo a precisão da alta cozinha italiana. "
+        'pt': "Stefano Bulla traz ao Mediterrâneo a precisão da alta cozinha italiana. "
               "Chef executivo do Gusto by Heinz Beck, restaurante com estrela "
               "MICHELIN, equilibra técnica, leveza e produto de época de exceção.",
-        'es': "Stefano Bula lleva al Mediterráneo la precisión de la alta cocina "
+        'es': "Stefano Bulla lleva al Mediterráneo la precisión de la alta cocina "
               "italiana. Chef ejecutivo de Gusto by Heinz Beck, restaurante con "
               "estrella MICHELIN, equilibra técnica, ligereza y producto de temporada "
               "excepcional.",
-        'de': "Stefano Bula bringt die Präzision der italienischen Spitzenküche ans "
+        'de': "Stefano Bulla bringt die Präzision der italienischen Spitzenküche ans "
               "Mittelmeer. Als Küchenchef des Gusto by Heinz Beck, ausgezeichnet mit "
               "einem MICHELIN Stern, verbindet er Technik, Leichtigkeit und "
               "herausragendes Saisonprodukt.",
-        'fr': "Stefano Bula apporte à la Méditerranée la précision de la haute "
+        'fr': "Stefano Bulla apporte à la Méditerranée la précision de la haute "
               "cuisine italienne. Chef exécutif du Gusto by Heinz Beck, restaurant "
               "étoilé au Guide MICHELIN, il allie technique, légèreté et produit de "
               "saison d'exception.",

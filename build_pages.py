@@ -54,7 +54,7 @@ CHEFS = {
     'telmo-pires':     ('Telmo Pires',     'Chef Telmo Pires under the lanterns at Raízes, the kitchen garden in front of him'),
     'alexandre-silva': ('Alexandre Silva', 'Chef Alexandre Silva with an axe against a stacked woodpile'),
     'ricardo-lucas':   ('Ricardo Lucas',   'Chef Ricardo Lucas picking lemons in the kitchen garden'),
-    'stefano-bula':    ('Stefano Bula',    'Chef Stefano Bula in the Gusto by Heinz Beck kitchen'),
+    'stefano-bula':    ('Stefano Bulla', 'Chef Stefano Bulla in the Gusto by Heinz Beck kitchen'),
     'louis-anjos':     ('Louis Anjos',     'Chef Louis Anjos under the pass lamps of his kitchen'),
 }
 
@@ -91,7 +91,7 @@ EVENTS = [
                 ('mediterraneo-dish-2', 'The Trattoria Pantaleone dining room in chequered marble'),
                 ('mediterraneo-dish-3', 'Caviar, radish and cauliflower on a white plate'),
                 ('mediterraneo-dish-4', 'A white-chocolate and berry dessert with sorbet')],
-     'hub_alt': 'Chef Stefano Bula in the Gusto by Heinz Beck kitchen'},
+     'hub_alt': 'Chef Stefano Bulla in the Gusto by Heinz Beck kitchen'},
     {'slug': 'algarve', 'title': 'Algarve', 'venue': 'Praça das Rosas', 'day': 8,
      'hero_y': '84%', 'guest': 'louis-anjos',
      'hero_alt': 'Praça das Rosas with the fire pit and the sea beyond',
