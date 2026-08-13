@@ -16,7 +16,33 @@ import content as C
 HERE = os.path.dirname(os.path.abspath(__file__))
 SITE = 'https://vilalara.com'
 THEME = f'{SITE}/wp-content/themes/vilalara/assets'
+# The hotel's own engine, which books rooms. Used for the header button, and as
+# the fallback for any evening that has no table booking of its own yet.
 BOOKING = 'https://reservations.vilalara.com/en/hotel/vilalara'
+
+# Table bookings, one Zenchef page per evening. Each restaurant has its own rid
+# and shxpid; the language rides on ?lang, and Portuguese is the default with no
+# parameter at all.
+#
+# Fill an evening in here and its Book your table button points at the right
+# service in the right language. Leave it out and the button falls back to
+# BOOKING above, which books rooms rather than tables, and the build says so.
+ZENCHEF = 'https://bookings.zenchef.com/results?rid={rid}&pid=1001&shxpid={shxpid}'
+
+TABLES = {
+    'atlantico': {'rid': 365676, 'shxpid': 127087},
+    'fogo':      {'rid': 365679, 'shxpid': 127094},
+    # 'mediterraneo' and 'algarve' still to come
+}
+
+
+def booking(slug, lang):
+    ids = TABLES.get(slug)
+    if not ids:
+        return BOOKING
+    url = ZENCHEF.format(**ids)
+    return url if lang == 'pt' else f'{url}&lang={lang}'
+
 
 # One menu link per evening. Leave empty and the button still renders, pointing
 # nowhere, and the build prints a warning so it cannot ship unnoticed.
@@ -377,7 +403,7 @@ def build_event(ev, lang):
 <section class="gs-outro gs-shell" data-anim="fade">
 <p class="gs-lead">{esc(C.CLOSE[ev['slug']][lang])}</p>
 <div class="gs-cta">
-<a class="vl-btn dark gs-btn-cta" href="{BOOKING}" target="_blank" rel="noopener">{esc(ui['book'])}</a>
+<a class="vl-btn dark gs-btn-cta" href="{booking(ev['slug'], lang)}" target="_blank" rel="noopener">{esc(ui['book'])}</a>
 <a class="vl-btn light gs-btn-cta" href="{MENUS[ev['slug']] or '#'}">{esc(ui['menu'])}</a>
 </div>
 <a class="gs-back" href="index.html">{esc(ui['back'])}</a>
@@ -467,6 +493,10 @@ def build_root_redirect():
 
 
 if __name__ == '__main__':
+    no_table = [e['slug'] for e in EVENTS if e['slug'] not in TABLES]
+    if no_table:
+        print('AVISO  sem reserva de mesa: ' + ', '.join(no_table)
+              + '   (o botao aponta para o motor de quartos; preencher TABLES)')
     missing = [k for k, v in MENUS.items() if not v]
     if missing:
         print('AVISO  sem link de menu: ' + ', '.join(missing)
