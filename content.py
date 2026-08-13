@@ -70,6 +70,20 @@ UI = {
 
 # ------------------------------------------------------------- hub, opening --
 
+# The small line above the title, which every page-head on the site carries:
+# CLUBS over "A place for everyone", GASTRONOMY over "Savor the abundance".
+# Taken verbatim from the site's own navigation in each language rather than
+# translated afresh, so the page names the anniversary the way the rest of the
+# site already names it. The theme uppercases it, so the casing here is only
+# what shows in the markup.
+HUB_KICKER = {
+    'en': "60′ Anniversary",   # the prime is the site's, kept for consistency
+    'pt': "60.º Aniversário",
+    'es': "60º aniversario",
+    'de': "60 Jahre",
+    'fr': "60e anniversaire",
+}
+
 HUB_LEAD = {
     'en': "Sixty years of Vilalara, celebrated at the table. In September, four guest "
           "chefs cook in four of our kitchens, one evening each. Tables set at dusk, "

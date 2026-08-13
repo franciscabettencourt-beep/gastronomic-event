@@ -424,6 +424,7 @@ def build_hub(lang):
 <section class="gs-hub-head" aria-labelledby="hub-title">
 <div class="gs-shell">
 <article class="vl-card slider-card-info mx-auto" data-anim="fade">
+<p class="vl-card-subtitle">{esc(C.HUB_KICKER[lang])}</p>
 <h1 class="vl-card-title" id="hub-title">{esc(ui['kicker'])} <i>{esc(C.MONTH[lang])}</i></h1>
 <hr class="gs-rule">
 <p class="gs-lead">{esc(C.HUB_LEAD[lang])}</p>
