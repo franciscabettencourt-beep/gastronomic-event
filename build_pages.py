@@ -25,7 +25,7 @@ MENUS = {'atlantico': '', 'fogo': '', 'mediterraneo': '', 'algarve': ''}
 CHEFS = {
     'diogo-pereira':   ('Diogo Pereira',   'Chef Diogo Pereira seated in the Coral dining room'),
     'joao-viegas':     ('João Viegas',     'Chef João Viegas in his dining room'),
-    'telmo-pires':     ('Telmo Pires',     'Chef Telmo Pires in front of the wood-fired oven'),
+    'telmo-pires':     ('Telmo Pires',     'Chef Telmo Pires under the lanterns at Raízes, the kitchen garden in front of him'),
     'alexandre-silva': ('Alexandre Silva', 'Chef Alexandre Silva with an axe against a stacked woodpile'),
     'ricardo-lucas':   ('Ricardo Lucas',   'Chef Ricardo Lucas picking lemons in the kitchen garden'),
     'stefano-bula':    ('Stefano Bula',    'Chef Stefano Bula in the Gusto by Heinz Beck kitchen'),

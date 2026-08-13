@@ -259,8 +259,9 @@ INTRO = {
 # hotel already uses for it on the site. The hour and the number can be added
 # later without touching anything else.
 CLOSE = {
-    # Atlântico stops at the date, by the client's decision. The other three
-    # still carry the concierge and the number; say the word and they follow.
+    # All four stop at the date. The concierge line and the telephone number
+    # came out by the client's decision: the Book your table button sits
+    # directly beneath this paragraph and already says it.
     'atlantico': {
         'en': "At Coral Éden do Mar the Atlantic sets the menu, and restraint does the "
               "rest. One evening only, on 4 September.",
@@ -275,54 +276,39 @@ CLOSE = {
     },
     'fogo': {
         'en': "Raízes stands on three things: the produce, the fire, and the long table "
-              "everyone shares. One evening only, on 5 September. Reserve through the "
-              "concierge or on (+351) 282 320 000.",
+              "everyone shares. One evening only, on 5 September.",
         'pt': "O Raízes assenta em três coisas: o produto, o fogo, e a mesa comprida que "
-              "todos partilham. Uma só noite, a 5 de setembro. Reserve pelo concierge ou "
-              "por (+351) 282 320 000.",
+              "todos partilham. Uma só noite, a 5 de setembro.",
         'es': "Raízes se sostiene en tres cosas: el producto, el fuego, y la mesa larga "
-              "que todos comparten. Una sola noche, el 5 de septiembre. Reserve por el "
-              "concierge o en (+351) 282 320 000.",
+              "que todos comparten. Una sola noche, el 5 de septiembre.",
         'de': "Raízes ruht auf drei Dingen: dem Produkt, dem Feuer, und der langen Tafel, "
-              "die alle teilen. Nur ein Abend, am 5. September. Reservierung über den "
-              "Concierge oder unter (+351) 282 320 000.",
+              "die alle teilen. Nur ein Abend, am 5. September.",
         'fr': "Raízes tient à trois choses : le produit, le feu, et la longue table que "
-              "tous partagent. Une seule soirée, le 5 septembre. Réservez auprès du "
-              "concierge ou au (+351) 282 320 000.",
+              "tous partagent. Une seule soirée, le 5 septembre.",
     },
     'mediterraneo': {
         'en': "At Trattoria Pantaleone, Italian tradition is cooked with Algarvian "
-              "ingredients. One evening only, on 7 September. Reserve through the "
-              "concierge or on (+351) 282 320 000.",
+              "ingredients. One evening only, on 7 September.",
         'pt': "Na Trattoria Pantaleone, a tradição italiana cozinha-se com produto "
-              "algarvio. Uma só noite, a 7 de setembro. Reserve pelo concierge ou por "
-              "(+351) 282 320 000.",
+              "algarvio. Uma só noite, a 7 de setembro.",
         'es': "En Trattoria Pantaleone, la tradición italiana se cocina con producto "
-              "algarvío. Una sola noche, el 7 de septiembre. Reserve por el concierge o "
-              "en (+351) 282 320 000.",
+              "algarvío. Una sola noche, el 7 de septiembre.",
         'de': "In der Trattoria Pantaleone wird italienische Tradition mit algarvischem "
-              "Produkt gekocht. Nur ein Abend, am 7. September. Reservierung über den "
-              "Concierge oder unter (+351) 282 320 000.",
+              "Produkt gekocht. Nur ein Abend, am 7. September.",
         'fr': "À la Trattoria Pantaleone, la tradition italienne se cuisine avec le "
-              "produit algarvien. Une seule soirée, le 7 septembre. Réservez auprès du "
-              "concierge ou au (+351) 282 320 000.",
+              "produit algarvien. Une seule soirée, le 7 septembre.",
     },
     'algarve': {
         'en': "Praça das Rosas is open to the sky, and on this evening to four kitchens "
-              "at once. The last of the four, on 8 September. Reserve through the "
-              "concierge or on (+351) 282 320 000.",
+              "at once. The last of the four, on 8 September.",
         'pt': "A Praça das Rosas abre-se ao céu, e nesta noite a quatro cozinhas ao mesmo "
-              "tempo. A última das quatro, a 8 de setembro. Reserve pelo concierge ou por "
-              "(+351) 282 320 000.",
+              "tempo. A última das quatro, a 8 de setembro.",
         'es': "Praça das Rosas se abre al cielo, y esta noche a cuatro cocinas a la vez. "
-              "La última de las cuatro, el 8 de septiembre. Reserve por el concierge o en "
-              "(+351) 282 320 000.",
+              "La última de las cuatro, el 8 de septiembre.",
         'de': "Die Praça das Rosas öffnet sich zum Himmel, an diesem Abend zu vier Küchen "
-              "zugleich. Der letzte der vier, am 8. September. Reservierung über den "
-              "Concierge oder unter (+351) 282 320 000.",
+              "zugleich. Der letzte der vier, am 8. September.",
         'fr': "La Praça das Rosas s'ouvre au ciel, et ce soir-là à quatre cuisines à la "
-              "fois. La dernière des quatre, le 8 septembre. Réservez auprès du concierge "
-              "ou au (+351) 282 320 000.",
+              "fois. La dernière des quatre, le 8 septembre.",
     },
 }
 
