@@ -48,6 +48,21 @@ def canonical(html):
     return m.group(1) if m else ''
 
 
+def served_language(html):
+    """Which language the visitor is actually being shown.
+
+    The one thing a status code cannot tell you. Slugs are unique per parent,
+    so while the German evenings do not exist, WordPress resolves `fogo` to
+    whichever page owns that slug and serves it happily at 200 under the German
+    path. Read from the language switcher, which is what the visitor sees, and
+    fall back to the canonical's own prefix."""
+    m = re.search(r'wpml-ls-current-language.*?<span[^>]*>\s*([A-Za-z]{2})', html, re.S)
+    if m:
+        return m.group(1).lower()
+    m = re.search(r'rel="canonical" href="https://[^/]+/([a-z]{2})/', html)
+    return m.group(1) if m else '?'
+
+
 def main():
     problems = []
     for lang in C.LANGS:
@@ -62,6 +77,8 @@ def main():
         elif real and real.rstrip('/') != hub.rstrip('/'):
             print(f'   hub            esta em {real}')
             problems.append(f'{lang}: hub em {real}, os blocos apontam para {hub}')
+        elif 'post-password-form' in html:
+            print('   hub            ok, protegida por palavra-passe')
         else:
             print('   hub            ok')
 
@@ -73,9 +90,14 @@ def main():
                 print(f"   {ev['slug']:<14} HTTP {status}")
                 problems.append(f"{lang}/{ev['slug']}: responde {status}")
                 continue
+            served = served_language(html)
             if real and real.rstrip('/') != url.rstrip('/'):
-                print(f"   {ev['slug']:<14} esta em {real}")
-                problems.append(f"{lang}/{ev['slug']}: esta em {real}")
+                print(f"   {ev['slug']:<14} serve a pagina {served.upper()}, {real}")
+                problems.append(f"{lang}/{ev['slug']}: por criar, cai na pagina {served.upper()}")
+                continue
+            if served != lang:
+                print(f"   {ev['slug']:<14} responde, mas em {served.upper()}")
+                problems.append(f"{lang}/{ev['slug']}: servida em {served.upper()}")
                 continue
 
             want = booking(ev['slug'], lang)
