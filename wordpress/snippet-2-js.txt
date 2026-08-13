@@ -36,10 +36,8 @@
        legal text, and its stylesheet narrows the <main> around it too. The
        stylesheet undoes both with :has(), and marks them here as well for
        browsers without :has(). See section 1 of the stylesheet. */
-    var host = gs.parentNode;
-    if (host && host.classList && host.classList.contains('content')) {
-      host.classList.add('gs-host');
-    }
+    var host = gs.closest && gs.closest('.content');
+    if (host) host.classList.add('gs-host');
     var main = gs.closest && gs.closest('main');
     if (main) main.classList.add('gs-main');
 

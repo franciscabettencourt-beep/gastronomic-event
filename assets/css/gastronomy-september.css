@@ -81,11 +81,17 @@
 .gs-main,
 main:has(.gs) { width: auto; max-width: none; margin-inline: 0; padding-top: 0; margin-bottom: 0; }
 
+/* Matched on a descendant rather than a child. A block pasted over an older one
+   can end up wrapped in stray markup, and a single unclosed tag is enough to
+   put the .gs a level deeper than expected. When that happened the child
+   selector stopped matching and the page snapped back to the 1320px Bootstrap
+   column, which reads as the design breaking rather than as the paste being
+   wrong. */
 .gs-host,
-.content.container:has(> .gs) { max-width: none; padding: 0; margin-inline: 0; }
+.content.container:has(.gs) { max-width: none; padding: 0; margin-inline: 0; }
 
 .gs-host > .page-title,
-.content.container:has(> .gs) > .page-title { display: none; }
+.content.container:has(.gs) > .page-title { display: none; }
 
 /* The same stylesheet dresses bare elements for a legal document: a Gill Sans
    body, 14 to 16px paragraphs on a 19px rhythm, and `main ul li` with a "• "

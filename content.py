@@ -175,7 +175,7 @@ INTRO = {
               "Marisco abierto al momento, arroz que no se apresura, sal y acidez en "
               "equilibrio. Una mesa guiada por lo que dejó la marea esa mañana.",
         'de': "Das Meer kommt vor dem Wein. Im Coral kocht João Viegas vierhändig mit "
-              "Diogo Pereira, der Gast und der Küchenchef an derselben Pass. "
+              "Diogo Pereira, der Gast und der Küchenchef am selben Pass. "
               "Meeresfrüchte à la minute geöffnet, Reis, der sich nicht drängen lässt, "
               "Salz und Säure im Gleichgewicht. Ein Tisch nach dem, was die Flut am "
               "Morgen zurückließ.",
@@ -186,47 +186,47 @@ INTRO = {
     },
     'fogo': {
         'en': "There is no gas at Raízes. There is wood, and there is patience. On 5 "
-              "September Alexandre Silva cooks four hands with Telmo Pires over the "
-              "embers, and returns to the oldest gesture of all. Contained intensity, "
-              "depth of flavour, and the time that smoke asks for.",
+              "September Alexandre Silva cooks four hands with Telmo Pires over the embers, "
+              "the guest and the head chef at the same fire. Contained intensity, depth of "
+              "flavour, and the time that smoke asks for.",
         'pt': "No Raízes não há gás. Há lenha, e há paciência. A 5 de setembro, Alexandre "
-              "Silva cozinha a quatro mãos com Telmo Pires sobre a brasa, e devolve ao "
-              "produto o gesto mais antigo de todos. Intensidade contida, sabor profundo, "
-              "e o tempo que o fumo exige.",
+              "Silva cozinha a quatro mãos com Telmo Pires sobre a brasa, o convidado e o "
+              "chef da casa no mesmo lume. Intensidade contida, sabor profundo, e o tempo "
+              "que o fumo exige.",
         'es': "En Raízes no hay gas. Hay leña, y hay paciencia. El 5 de septiembre, "
-              "Alexandre Silva cocina a cuatro manos con Telmo Pires sobre la brasa, y "
-              "devuelve al producto el gesto más antiguo de todos. Intensidad contenida, "
-              "sabor profundo, y el tiempo que el humo exige.",
+              "Alexandre Silva cocina a cuatro manos con Telmo Pires sobre la brasa, el "
+              "invitado y el chef de la casa en el mismo fuego. Intensidad contenida, sabor "
+              "profundo, y el tiempo que el humo exige.",
         'de': "Im Raízes gibt es kein Gas. Es gibt Holz, und es gibt Geduld. Am 5. "
-              "September kocht Alexandre Silva vierhändig mit Telmo Pires über der Glut "
-              "und kehrt zur ältesten Geste von allen zurück. Verhaltene Intensität, "
-              "tiefer Geschmack, und die Zeit, die der Rauch verlangt.",
+              "September kocht Alexandre Silva vierhändig mit Telmo Pires über der Glut, "
+              "der Gast und der Küchenchef am selben Feuer. Verhaltene Intensität, tiefer "
+              "Geschmack, und die Zeit, die der Rauch verlangt.",
         'fr': "Il n'y a pas de gaz au Raízes. Il y a du bois, et il y a de la patience. Le "
               "5 septembre, Alexandre Silva cuisine à quatre mains avec Telmo Pires sur la "
-              "braise, et retrouve le geste le plus ancien de tous. Intensité contenue, "
+              "braise, l'invité et le chef de la maison au même feu. Intensité contenue, "
               "saveur profonde, et le temps que la fumée exige.",
     },
     'mediterraneo': {
-        'en': "Simplicity as a destination, not a starting point. At the Trattoria, "
-              "Stefano Bula cooks four hands with Ricardo Lucas, with pasta made by hand, "
-              "olive oil and ripe tomato. Few ingredients, when they are the right ones. "
-              "You stay at the table longer than you planned.",
+        'en': "Simplicity as a destination, not a starting point. At the Trattoria, Stefano "
+              "Bula cooks four hands with Ricardo Lucas, the guest and the head chef at the "
+              "same pass. Pasta made by hand, olive oil and ripe tomato. Few ingredients, "
+              "when they are the right ones.",
         'pt': "A simplicidade como ponto de chegada, não de partida. Na Trattoria, Stefano "
-              "Bula cozinha a quatro mãos com Ricardo Lucas, com massa feita à mão, azeite "
-              "e tomate maduro. Poucos ingredientes, quando são os certos. Fica-se à mesa "
-              "mais tempo do que se previa.",
+              "Bula cozinha a quatro mãos com Ricardo Lucas, o convidado e o chef da casa "
+              "no mesmo passe. Massa feita à mão, azeite e tomate maduro. Poucos "
+              "ingredientes, quando são os certos.",
         'es': "La simplicidad como punto de llegada, no de partida. En la Trattoria, "
-              "Stefano Bula cocina a cuatro manos con Ricardo Lucas, con pasta hecha a "
-              "mano, aceite de oliva y tomate maduro. Pocos ingredientes, cuando son los "
-              "correctos. Uno se queda en la mesa más tiempo del previsto.",
+              "Stefano Bula cocina a cuatro manos con Ricardo Lucas, el invitado y el chef "
+              "de la casa en el mismo pase. Pasta hecha a mano, aceite de oliva y tomate "
+              "maduro. Pocos ingredientes, cuando son los correctos.",
         'de': "Einfachheit als Ziel, nicht als Ausgangspunkt. In der Trattoria kocht "
-              "Stefano Bula vierhändig mit Ricardo Lucas, mit handgemachter Pasta, "
-              "Olivenöl und reifer Tomate. Wenige Zutaten, wenn es die richtigen sind. Man "
-              "bleibt länger am Tisch als geplant.",
+              "Stefano Bula vierhändig mit Ricardo Lucas, der Gast und der Küchenchef am "
+              "selben Pass. Handgemachte Pasta, Olivenöl und reife Tomate. Wenige Zutaten, "
+              "wenn es die richtigen sind.",
         'fr': "La simplicité comme point d'arrivée, non de départ. À la Trattoria, Stefano "
-              "Bula cuisine à quatre mains avec Ricardo Lucas, pâtes faites à la main, "
-              "huile d'olive et tomate mûre. Peu d'ingrédients, quand ce sont les bons. On "
-              "reste à table plus longtemps que prévu.",
+              "Bula cuisine à quatre mains avec Ricardo Lucas, l'invité et le chef de la "
+              "maison au même passe. Pâtes faites à la main, huile d'olive et tomate mûre. "
+              "Peu d'ingrédients, quand ce sont les bons.",
     },
     'algarve': {
         'en': "The last evening happens in the open air, at Praça das Rosas, with the sea "
