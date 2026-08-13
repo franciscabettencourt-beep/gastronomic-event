@@ -367,24 +367,24 @@ CHEF_NOTE = {
               "saveurs de la terre. Au Raízes, le produit local, la tradition et la "
               "chaleur de la flamme composent une cuisine faite pour être partagée.",
     },
+    # No journey from Italy to the Algarve: he is from neither. The note says
+    # what he cooks and where, and leaves where he is from to him.
     'ricardo-lucas': {
-        'en': "From Italy to the Algarve, Ricardo Lucas brings the soul of the "
-              "Italian table to Vilalara. At Trattoria Pantaleone, tradition, "
-              "simplicity and generous flavours create an experience made for "
-              "gathering.",
-        'pt': "De Itália para o Algarve, Ricardo Lucas traz a alma da mesa italiana "
-              "ao Vilalara. Na Trattoria Pantaleone, a tradição, a simplicidade e os "
-              "sabores generosos criam uma experiência feita para reunir.",
-        'es': "De Italia al Algarve, Ricardo Lucas trae el alma de la mesa italiana "
-              "a Vilalara. En Trattoria Pantaleone, la tradición, la sencillez y los "
-              "sabores generosos crean una experiencia hecha para reunirse.",
-        'de': "Von Italien an die Algarve bringt Ricardo Lucas die Seele der "
-              "italienischen Tafel nach Vilalara. In der Trattoria Pantaleone werden "
-              "Tradition, Einfachheit und großzügige Aromen zu einem Abend, der "
-              "Menschen zusammenführt.",
-        'fr': "D'Italie à l'Algarve, Ricardo Lucas apporte l'âme de la table "
-              "italienne à Vilalara. À la Trattoria Pantaleone, tradition, simplicité "
-              "et saveurs généreuses composent une soirée faite pour se réunir.",
+        'en': "Ricardo Lucas brings the soul of the Italian table to Vilalara. At "
+              "Trattoria Pantaleone, tradition, simplicity and generous flavours "
+              "create an experience made for gathering.",
+        'pt': "Ricardo Lucas traz a alma da mesa italiana ao Vilalara. Na Trattoria "
+              "Pantaleone, a tradição, a simplicidade e os sabores generosos criam "
+              "uma experiência feita para reunir.",
+        'es': "Ricardo Lucas trae el alma de la mesa italiana a Vilalara. En "
+              "Trattoria Pantaleone, la tradición, la sencillez y los sabores "
+              "generosos crean una experiencia hecha para reunirse.",
+        'de': "Ricardo Lucas bringt die Seele der italienischen Tafel nach Vilalara. "
+              "In der Trattoria Pantaleone werden Tradition, Einfachheit und "
+              "großzügige Aromen zu einem Abend, der Menschen zusammenführt.",
+        'fr': "Ricardo Lucas apporte l'âme de la table italienne à Vilalara. À la "
+              "Trattoria Pantaleone, tradition, simplicité et saveurs généreuses "
+              "composent une soirée faite pour se réunir.",
     },
     'joao-viegas': {
         'en': "For one evening, João Viegas brings his own interpretation of the "
