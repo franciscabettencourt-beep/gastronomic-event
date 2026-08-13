@@ -252,73 +252,80 @@ INTRO = {
     },
 }
 
-# ---------------------------------------------------------- event, closing ---
-# [HORA] and [N] are placeholders. Fill them in before publishing.
 
+# The closing paragraph of each evening. No hour and no cover count: neither is
+# settled, and a page that prints [HORA] is worse than one that never raises the
+# question. Each names its restaurant and says what it is, in the words the
+# hotel already uses for it on the site. The hour and the number can be added
+# later without touching anything else.
 CLOSE = {
     'atlantico': {
-        'en': "One service, one sitting. Dinner from [HORA] on 4 September at Coral, for "
-              "[N] guests. Reserve through the concierge or on (+351) 282 320 000.",
-        'pt': "Um só serviço, uma só mesa. Jantar a partir das [HORA] de 4 de setembro, no "
-              "Coral, para [N] pessoas. Reserve pelo concierge ou por (+351) 282 320 000.",
-        'es': "Un solo servicio, una sola mesa. Cena desde las [HORA] del 4 de septiembre, "
-              "en Coral, para [N] personas. Reserve por el concierge o en (+351) 282 320 000.",
-        'de': "Ein Service, eine Tafel. Abendessen ab [HORA] am 4. September im Coral, für "
-              "[N] Gäste. Reservierung über den Concierge oder unter (+351) 282 320 000.",
-        'fr': "Un seul service, une seule table. Dîner à partir de [HORA] le 4 septembre au "
-              "Coral, pour [N] convives. Réservez auprès du concierge ou au "
+        'en': "At Coral Éden do Mar the Atlantic sets the menu, and restraint does the "
+              "rest. One evening only, on 4 September. Reserve through the concierge or "
+              "on (+351) 282 320 000.",
+        'pt': "No Coral Éden do Mar é o Atlântico que faz a ementa, e a contenção faz o "
+              "resto. Uma só noite, a 4 de setembro. Reserve pelo concierge ou por "
               "(+351) 282 320 000.",
+        'es': "En Coral Éden do Mar es el Atlántico quien decide el menú, y la contención "
+              "hace el resto. Una sola noche, el 4 de septiembre. Reserve por el "
+              "concierge o en (+351) 282 320 000.",
+        'de': "Im Coral Éden do Mar schreibt der Atlantik die Karte, den Rest macht die "
+              "Zurückhaltung. Nur ein Abend, am 4. September. Reservierung über den "
+              "Concierge oder unter (+351) 282 320 000.",
+        'fr': "Au Coral Éden do Mar, c'est l'Atlantique qui écrit la carte, la retenue "
+              "fait le reste. Une seule soirée, le 4 septembre. Réservez auprès du "
+              "concierge ou au (+351) 282 320 000.",
     },
     'fogo': {
-        'en': "The fire is lit long before you arrive. Dinner from [HORA] on 5 September at "
-              "Raízes, for [N] guests around the embers. Reserve through the concierge or "
-              "on (+351) 282 320 000.",
-        'pt': "O lume acende-se muito antes de chegar. Jantar a partir das [HORA] de 5 de "
-              "setembro, no Raízes, para [N] pessoas à volta da brasa. Reserve pelo "
-              "concierge ou por (+351) 282 320 000.",
-        'es': "El fuego se enciende mucho antes de llegar. Cena desde las [HORA] del 5 de "
-              "septiembre, en Raízes, para [N] personas alrededor de la brasa. Reserve por "
-              "el concierge o en (+351) 282 320 000.",
-        'de': "Das Feuer brennt lange bevor Sie kommen. Abendessen ab [HORA] am 5. September "
-              "im Raízes, für [N] Gäste rund um die Glut. Reservierung über den Concierge "
-              "oder unter (+351) 282 320 000.",
-        'fr': "Le feu est allumé bien avant votre arrivée. Dîner à partir de [HORA] le 5 "
-              "septembre au Raízes, pour [N] convives autour de la braise. Réservez auprès "
-              "du concierge ou au (+351) 282 320 000.",
+        'en': "Raízes stands on three things: the produce, the fire, and the long table "
+              "everyone shares. One evening only, on 5 September. Reserve through the "
+              "concierge or on (+351) 282 320 000.",
+        'pt': "O Raízes assenta em três coisas: o produto, o fogo, e a mesa comprida que "
+              "todos partilham. Uma só noite, a 5 de setembro. Reserve pelo concierge ou "
+              "por (+351) 282 320 000.",
+        'es': "Raízes se sostiene en tres cosas: el producto, el fuego, y la mesa larga "
+              "que todos comparten. Una sola noche, el 5 de septiembre. Reserve por el "
+              "concierge o en (+351) 282 320 000.",
+        'de': "Raízes ruht auf drei Dingen: dem Produkt, dem Feuer, und der langen Tafel, "
+              "die alle teilen. Nur ein Abend, am 5. September. Reservierung über den "
+              "Concierge oder unter (+351) 282 320 000.",
+        'fr': "Raízes tient à trois choses : le produit, le feu, et la longue table que "
+              "tous partagent. Une seule soirée, le 5 septembre. Réservez auprès du "
+              "concierge ou au (+351) 282 320 000.",
     },
     'mediterraneo': {
-        'en': "Come hungry, and leave the evening open. Dinner from [HORA] on 7 September "
-              "at the Trattoria, for [N] guests. Reserve through the concierge or on "
+        'en': "At Trattoria Pantaleone, Italian tradition is cooked with Algarvian "
+              "ingredients. One evening only, on 7 September. Reserve through the "
+              "concierge or on (+351) 282 320 000.",
+        'pt': "Na Trattoria Pantaleone, a tradição italiana cozinha-se com produto "
+              "algarvio. Uma só noite, a 7 de setembro. Reserve pelo concierge ou por "
               "(+351) 282 320 000.",
-        'pt': "Venha com fome, e deixe a noite em aberto. Jantar a partir das [HORA] de 7 "
-              "de setembro, na Trattoria, para [N] pessoas. Reserve pelo concierge ou por "
-              "(+351) 282 320 000.",
-        'es': "Venga con hambre, y deje la noche abierta. Cena desde las [HORA] del 7 de "
-              "septiembre, en Trattoria, para [N] personas. Reserve por el concierge o en "
-              "(+351) 282 320 000.",
-        'de': "Kommen Sie hungrig, und halten Sie den Abend frei. Abendessen ab [HORA] am 7. "
-              "September in der Trattoria, für [N] Gäste. Reservierung über den Concierge "
-              "oder unter (+351) 282 320 000.",
-        'fr': "Venez avec appétit, et gardez la soirée libre. Dîner à partir de [HORA] le 7 "
-              "septembre à la Trattoria, pour [N] convives. Réservez auprès du concierge ou "
-              "au (+351) 282 320 000.",
+        'es': "En Trattoria Pantaleone, la tradición italiana se cocina con producto "
+              "algarvío. Una sola noche, el 7 de septiembre. Reserve por el concierge o "
+              "en (+351) 282 320 000.",
+        'de': "In der Trattoria Pantaleone wird italienische Tradition mit algarvischem "
+              "Produkt gekocht. Nur ein Abend, am 7. September. Reservierung über den "
+              "Concierge oder unter (+351) 282 320 000.",
+        'fr': "À la Trattoria Pantaleone, la tradition italienne se cuisine avec le "
+              "produit algarvien. Une seule soirée, le 7 septembre. Réservez auprès du "
+              "concierge ou au (+351) 282 320 000.",
     },
     'algarve': {
-        'en': "Of four evenings, this is the one that closes them. From [HORA] on 8 "
-              "September at Praça das Rosas, in the open air, for [N] guests. Reserve "
-              "through the concierge or on (+351) 282 320 000.",
-        'pt': "De quatro noites, esta é a que as fecha. A partir das [HORA] de 8 de "
-              "setembro, na Praça das Rosas, ao ar livre, para [N] pessoas. Reserve pelo "
-              "concierge ou por (+351) 282 320 000.",
-        'es': "De cuatro noches, esta es la que las cierra. Desde las [HORA] del 8 de "
-              "septiembre, en Praça das Rosas, al aire libre, para [N] personas. Reserve "
-              "por el concierge o en (+351) 282 320 000.",
-        'de': "Von vier Abenden ist dies der, der sie beschließt. Ab [HORA] am 8. September "
-              "auf der Praça das Rosas, unter freiem Himmel, für [N] Gäste. Reservierung "
-              "über den Concierge oder unter (+351) 282 320 000.",
-        'fr': "De quatre soirées, voici celle qui les referme. À partir de [HORA] le 8 "
-              "septembre sur la Praça das Rosas, en plein air, pour [N] convives. Réservez "
-              "auprès du concierge ou au (+351) 282 320 000.",
+        'en': "Praça das Rosas is open to the sky, and on this evening to four kitchens "
+              "at once. The last of the four, on 8 September. Reserve through the "
+              "concierge or on (+351) 282 320 000.",
+        'pt': "A Praça das Rosas abre-se ao céu, e nesta noite a quatro cozinhas ao mesmo "
+              "tempo. A última das quatro, a 8 de setembro. Reserve pelo concierge ou por "
+              "(+351) 282 320 000.",
+        'es': "Praça das Rosas se abre al cielo, y esta noche a cuatro cocinas a la vez. "
+              "La última de las cuatro, el 8 de septiembre. Reserve por el concierge o en "
+              "(+351) 282 320 000.",
+        'de': "Die Praça das Rosas öffnet sich zum Himmel, an diesem Abend zu vier Küchen "
+              "zugleich. Der letzte der vier, am 8. September. Reservierung über den "
+              "Concierge oder unter (+351) 282 320 000.",
+        'fr': "La Praça das Rosas s'ouvre au ciel, et ce soir-là à quatre cuisines à la "
+              "fois. La dernière des quatre, le 8 septembre. Réservez auprès du concierge "
+              "ou au (+351) 282 320 000.",
     },
 }
 

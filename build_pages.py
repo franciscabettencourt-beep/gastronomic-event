@@ -50,7 +50,7 @@ EVENTS = [
      'hub_alt': 'Chef João Viegas in the dining room'},
     {'slug': 'fogo', 'title': 'Fogo', 'venue': 'Raízes', 'day': 5,
      'hero_y': '50%', 'guest': 'alexandre-silva',
-     'hero_alt': 'The long communal table under the vine pergola at Raízes',
+     'hero_alt': 'A table laid in the kitchen garden at Raízes, tomatoes still on the vine behind it',
      'chefs': ['telmo-pires', 'alexandre-silva'],
      'dishes': [('fogo-dish-1', 'Heirloom tomatoes and just-picked lettuce on a sunlit table'),
                 ('fogo-dish-2', 'The open fire and grill at Raízes'),
