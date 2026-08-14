@@ -437,6 +437,87 @@ a:focus-visible > .gs-media img,
 /* The dots are gone by request. The row still swipes, scrolls and takes arrow
    keys on its own, so nothing was lost but the second way of doing it. */
 
+/* ========================= 5b. COUNTDOWN ================================= */
+
+/* For the anniversary page. A field of arena, the kicker, the event in the
+   script face, then the four figures. The theme has nothing like it, so this is
+   the one component here that is not borrowed.
+
+   The figures are tabular so they do not jitter as they tick, and each carries
+   its own label beneath. If the script does not run, or the date has passed,
+   the whole block removes itself rather than showing zeros or, as the page did
+   for a day, negative numbers. */
+.gs-countdown {
+  background-color: var(--gs-band);
+  text-align: center;
+  padding-block: clamp(56px, 5.9vw, 113px);
+}
+
+.gs-countdown__kicker {
+  font-family: var(--font-gill);
+  font-size: clamp(11px, .625vw, 12px);
+  font-weight: 300;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: var(--color-marron);
+}
+
+.gs-countdown__title {
+  font-family: var(--font-millionaire-script);
+  font-size: clamp(30px, 2.396vw, 46px);
+  line-height: 1.12;
+  letter-spacing: .05em;
+  margin-right: -.05em;          /* the tracking after the last glyph, taken back */
+  color: var(--color-marron);
+  margin-top: clamp(10px, .885vw, 17px);
+}
+
+.gs-countdown__clock {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: clamp(10px, 1.3vw, 25px);
+  margin-top: clamp(28px, 2.6vw, 50px);
+}
+
+.gs-countdown__unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: clamp(54px, 4.7vw, 90px);
+}
+
+.gs-countdown__n {
+  font-family: var(--font-optima);
+  font-size: clamp(40px, 3.65vw, 70px);
+  line-height: 1;
+  letter-spacing: .04em;
+  margin-right: -.04em;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-marron);
+}
+
+.gs-countdown__label {
+  font-family: var(--font-gill);
+  font-size: clamp(9px, .52vw, 10px);
+  font-weight: 300;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: var(--color-marron);
+  margin-top: clamp(6px, .52vw, 10px);
+}
+
+.gs-countdown__sep {
+  font-family: var(--font-optima);
+  font-size: clamp(30px, 2.6vw, 50px);
+  line-height: 1.35;
+  color: var(--color-marron);
+  opacity: .55;
+}
+
+/* Hidden until the script has put real figures in, so nothing flashes 00. */
+.gs-countdown:not(.is-running) { display: none; }
+
 /* ============================ 6. ARENA BAND ============================== */
 
 /* A single field of arena that starts partway down the portraits and ends

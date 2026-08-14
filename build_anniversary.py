@@ -31,6 +31,7 @@ import io
 import os
 
 import content as C
+from build_pages import BOOKING
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(HERE, 'wordpress', 'anniversary')
@@ -46,18 +47,73 @@ FIXES = [
     'An elegant an contemporary -> an elegant and contemporary',
 ]
 
-# Headings for the two halves.
+# The hero photograph the page already uses, and the moment the clock counts to.
+#
+# All four widths WordPress generated, not just the largest and the smallest.
+# The page as it stands offers only 1024 and 2560, so a laptop downloads a
+# megabyte to show it; with the middle sizes listed it takes 385KB instead.
+_HERO_DIR = 'https://vilalara.com/wp-content/uploads/2025/03/'
+HERO_SIZES = [
+    ('13_VL_PanoramicArial_LYCLAND-1024x683.jpg', 1024),
+    ('13_VL_PanoramicArial_LYCLAND-1536x1024.jpg', 1536),
+    ('13_VL_PanoramicArial_LYCLAND-2048x1365.jpg', 2048),
+    ('13_VL_PanoramicArial_LYCLAND-scaled.jpg', 2560),
+]
+HERO_SRCSET = ', '.join(f'{_HERO_DIR}{f} {w}w' for f, w in HERO_SIZES)
+HERO_SRC = _HERO_DIR + HERO_SIZES[1][0]
+
+# The first evening of the gastronomy month, which is the next thing to happen.
+# Written in the hotel's own time; carousel.js reads it and removes the block
+# once it is past, rather than counting upwards as the old one did.
+COUNTDOWN_UNTIL = '2026-09-04 19:00:00'
+
 UI = {
     'en': {'next': 'Still to come', 'past': 'The season so far',
-           'more': 'More information', 'invitation': 'By invitation'},
+           'more': 'More information', 'invitation': 'By invitation',
+           'kicker': 'Vilalara Grand Hotel Algarve, est. 1966',
+           'title': '60 years of Vilalara',
+           'lead': 'A season marked by gastronomy, wellness, culture and legacy.',
+           'events': 'Discover the events', 'stay': 'Reserve your stay',
+           'next_event': 'Next event',
+           'days': 'Days', 'hours': 'Hours', 'minutes': 'Minutes', 'seconds': 'Seconds',
+           'hero_alt': 'Vilalara from the air, the gardens between the cliffs and the sea'},
     'pt': {'next': 'Ainda por vir', 'past': 'A temporada até aqui',
-           'more': 'Saber mais', 'invitation': 'Por convite'},
+           'more': 'Saber mais', 'invitation': 'Por convite',
+           'kicker': 'Vilalara Grand Hotel Algarve, fundado em 1966',
+           'title': '60 anos de Vilalara',
+           'lead': 'Uma época marcada pela gastronomia, bem-estar, cultura e património.',
+           'events': 'Descubra os eventos', 'stay': 'Reserve a sua estadia',
+           'next_event': 'Próximo evento',
+           'days': 'Dias', 'hours': 'Horas', 'minutes': 'Minutos', 'seconds': 'Segundos',
+           'hero_alt': 'O Vilalara visto do ar, os jardins entre a falésia e o mar'},
     'es': {'next': 'Aún por venir', 'past': 'La temporada hasta ahora',
-           'more': 'Saber más', 'invitation': 'Por invitación'},
+           'more': 'Saber más', 'invitation': 'Por invitación',
+           'kicker': 'Vilalara Grand Hotel Algarve, fundado en 1966',
+           'title': '60 años de Vilalara',
+           'lead': 'Una temporada marcada por la gastronomía, el bienestar, la cultura y el legado.',
+           'events': 'Descubra los eventos', 'stay': 'Reserve su estancia',
+           'next_event': 'Próximo evento',
+           'days': 'Días', 'hours': 'Horas', 'minutes': 'Minutos', 'seconds': 'Segundos',
+           'hero_alt': 'Vilalara desde el aire, los jardines entre el acantilado y el mar'},
     'de': {'next': 'Noch bevorstehend', 'past': 'Die Saison bisher',
-           'more': 'Mehr erfahren', 'invitation': 'Auf Einladung'},
+           'more': 'Mehr erfahren', 'invitation': 'Auf Einladung',
+           'kicker': 'Vilalara Grand Hotel Algarve, gegründet 1966',
+           'title': '60 Jahre Vilalara',
+           'lead': 'Eine Saison im Zeichen von Gastronomie, Wellness, Kultur und Erbe.',
+           'events': 'Die Veranstaltungen', 'stay': 'Aufenthalt buchen',
+           'next_event': 'Nächste Veranstaltung',
+           'days': 'Tage', 'hours': 'Stunden', 'minutes': 'Minuten', 'seconds': 'Sekunden',
+           'hero_alt': 'Vilalara aus der Luft, die Gärten zwischen Klippe und Meer'},
     'fr': {'next': 'À venir', 'past': 'La saison jusqu\'ici',
-           'more': 'En savoir plus', 'invitation': 'Sur invitation'},
+           'more': 'En savoir plus', 'invitation': 'Sur invitation',
+           'kicker': 'Vilalara Grand Hotel Algarve, fondé en 1966',
+           'title': '60 ans de Vilalara',
+           'lead': 'Une saison placée sous le signe de la gastronomie, du bien-être, '
+                   'de la culture et du patrimoine.',
+           'events': 'Découvrir les événements', 'stay': 'Réserver votre séjour',
+           'next_event': 'Prochain événement',
+           'days': 'Jours', 'hours': 'Heures', 'minutes': 'Minutes', 'seconds': 'Secondes',
+           'hero_alt': 'Vilalara vu du ciel, les jardins entre la falaise et la mer'},
 }
 
 # The three that have not happened yet, in date order.
@@ -255,19 +311,68 @@ def row(ev, lang, i):
             f'{media(ev, lang)}</article>')
 
 
+def hero(lang):
+    ui = UI[lang]
+    return (
+        f'<section class="gs-hero" data-anim="zoom-image">'
+        f'<img src="{HERO_SRC}" srcset="{HERO_SRCSET}" '
+        f'sizes="100vw" alt="{esc(ui["hero_alt"])}" fetchpriority="high" decoding="async">'
+        f'</section>'
+        f'<section class="gs-hub-head" aria-labelledby="anniv-title-{lang}">'
+        f'<div class="gs-shell">'
+        f'<article class="vl-card slider-card-info mx-auto" data-anim="fade">'
+        f'<p class="vl-card-subtitle">{esc(ui["kicker"])}</p>'
+        f'<h1 class="vl-card-title" id="anniv-title-{lang}">{esc(ui["title"])}</h1>'
+        f'<hr class="gs-rule">'
+        f'<p class="gs-lead">{esc(ui["lead"])}</p>'
+        f'<div class="gs-cta">'
+        f'<a class="vl-btn dark gs-btn-cta" href="#eventos">{esc(ui["events"])}</a>'
+        f'<a class="vl-btn light gs-btn-cta" href="{BOOKING}" target="_blank" '
+        f'rel="noopener">{esc(ui["stay"])}</a>'
+        f'</div></article></div></section>'
+    )
+
+
+def countdown(lang):
+    """Counts to the first evening of the gastronomy month.
+
+    Hidden by the stylesheet until the script fills it in, and removed by the
+    script once the date is past, so it can never show zeros or the negative
+    figures the old one showed the morning after the eclipse."""
+    ui = UI[lang]
+    unit = ('<div class="gs-countdown__unit">'
+            '<span class="gs-countdown__n" data-unit="{u}">--</span>'
+            '<span class="gs-countdown__label">{l}</span></div>')
+    sep = '<span class="gs-countdown__sep" aria-hidden="true">:</span>'
+    clock = sep.join(unit.format(u=u, l=esc(ui[u])) for u in
+                     ('days', 'hours', 'minutes', 'seconds'))
+    return (
+        f'<section class="gs-countdown" data-until="{COUNTDOWN_UNTIL}" '
+        f'aria-label="{esc(ui["next_event"])}">'
+        f'<p class="gs-countdown__kicker">{esc(ui["next_event"])}</p>'
+        f'<p class="gs-countdown__title">{esc(UPCOMING[0]["title"][lang])}</p>'
+        f'<div class="gs-countdown__clock">{clock}</div>'
+        f'</section>'
+    )
+
+
 def block(lang):
     ui = UI[lang]
     rows = ''.join(row(ev, lang, i) for i, ev in enumerate(UPCOMING))
     past = ''.join(
         f'<li class="gs-tab"><span class="gs-tab__date">{esc(p["date"][lang])}</span>'
         f'{esc(p["name"][lang])}</li>' for p in PAST)
-    return f'''<!-- 60 anos, a metade que ainda vem · {lang.upper()}
-     Cola no editor da pagina do aniversario, em modo HTML, no lugar das
-     seccoes dos eventos. O herei e a contagem ficam onde estao.
-     A <div class="gs"> de fora e obrigatoria, e o que liga o CSS. -->
+    return f'''<!-- 60 anos de Vilalara · {lang.upper()} · a pagina inteira.
+     Pagina nova, com o Modelo (Template) `Privacy`, a mesma da gastronomica.
+     Cola isto num bloco de HTML personalizado. Nao colar <header> nem
+     <footer>: sao do tema. A <div class="gs"> de fora e obrigatoria. -->
 <div class="gs">
 
-<section class="gs-anniv gs-shell" aria-labelledby="anniv-next-{lang}">
+{hero(lang)}
+
+{countdown(lang)}
+
+<section class="gs-anniv gs-shell" id="eventos" aria-labelledby="anniv-next-{lang}">
 <hr class="gs-rule">
 <h2 class="gs-display gs-display--section" id="anniv-next-{lang}" data-anim="fade">{esc(ui['next'])}</h2>
 </section>

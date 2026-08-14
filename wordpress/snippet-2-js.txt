@@ -78,4 +78,39 @@
     }, 3000);
   });
 
+  /* The countdown on the anniversary page.
+
+     The date lives in the markup as data-until, in the hotel's own time, and
+     the block stays hidden until real figures are in it, so nothing flashes 00
+     on the way. Once the date has passed the block removes itself: the page
+     spent a day showing "-1 days, -23 hours" after the eclipse, and a missing
+     countdown reads better than a wrong one. */
+  Array.prototype.forEach.call(document.querySelectorAll('[data-until]'), function (box) {
+    var until = new Date(box.getAttribute('data-until').replace(' ', 'T') + '+01:00');
+    if (isNaN(until)) { box.remove(); return; }
+
+    var cells = {};
+    ['days', 'hours', 'minutes', 'seconds'].forEach(function (unit) {
+      cells[unit] = box.querySelector('[data-unit="' + unit + '"]');
+    });
+
+    function tick() {
+      var left = until - new Date();
+      if (left <= 0) { box.remove(); clearInterval(timer); return; }
+      var s = Math.floor(left / 1000);
+      var v = { days: Math.floor(s / 86400), hours: Math.floor(s / 3600) % 24,
+                minutes: Math.floor(s / 60) % 60, seconds: s % 60 };
+      Object.keys(cells).forEach(function (unit) {
+        if (cells[unit]) {
+          var n = String(v[unit]);
+          cells[unit].textContent = n.length < 2 ? '0' + n : n;
+        }
+      });
+      box.classList.add('is-running');
+    }
+
+    tick();
+    var timer = setInterval(tick, 1000);
+  });
+
 })();
