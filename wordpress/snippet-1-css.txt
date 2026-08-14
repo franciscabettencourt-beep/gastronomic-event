@@ -555,6 +555,36 @@ a:focus-visible > .gs-media img,
   text-wrap: balance;
 }
 
+/* The anniversary head, tightened.
+   ------------------------------
+   These values were drawn for the gastronomy hub, where the rule and the lead
+   carry the whole weight of the page opening. Here the head sits under a full
+   bleed photograph and over a countdown, and at the same spacing the block
+   read as mostly empty arena: 104px above the rule, 129 above the buttons and
+   111 below them, on top of the photograph's own presence. */
+/* Two classes on the same element, deliberately: the hub's own rules for this
+   block live further down the file, so at equal weight they would win on
+   source order. */
+.gs-hub-head.gs-anniv-head .gs-rule { margin-top: clamp(30px, 2.6vw, 50px); }
+.gs-hub-head.gs-anniv-head .gs-cta  { margin-top: clamp(34px, 3.13vw, 60px); }
+.gs-hub-head.gs-anniv-head          { padding-bottom: clamp(34px, 3.13vw, 60px); }
+
+/* A quiet close, so the page ends on an invitation rather than trailing off
+   into the footer after a list of things already over. */
+.gs-close {
+  text-align: center;
+  padding-block: clamp(50px, 4.7vw, 90px) clamp(66px, 6.25vw, 120px);
+}
+
+.gs-close .gs-lead {
+  max-width: 620px;
+  margin: clamp(24px, 2.08vw, 40px) auto 0;
+  font-size: clamp(15px, 1.042vw, 20px);
+  line-height: 1.45;
+}
+
+.gs-close .gs-cta { margin-top: clamp(28px, 2.6vw, 50px); }
+
 /* ========================= 5c. THE SEASON SO FAR ========================= */
 
 /* The evenings already served, on the anniversary page. They were briefly

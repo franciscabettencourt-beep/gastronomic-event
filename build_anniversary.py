@@ -116,6 +116,8 @@ UI = {
            'hero_alt': 'Vilalara vu du ciel, les jardins entre la falaise et la mer'},
 }
 
+CLOSE = {'en': ('The season runs to the eighth of October. Rooms, tables and treatments are booked separately, and the concierge will put an evening together around your stay.', 'Reserve your stay'), 'pt': ('A temporada vai até 8 de outubro. Quartos, mesas e tratamentos reservam-se à parte, e o concierge monta a noite à volta da sua estadia.', 'Reserve a sua estadia'), 'es': ('La temporada se extiende hasta el 8 de octubre. Habitaciones, mesas y tratamientos se reservan por separado, y el concierge compone la velada en torno a su estancia.', 'Reserve su estancia'), 'de': ('Die Saison läuft bis zum 8. Oktober. Zimmer, Tische und Behandlungen werden getrennt gebucht, und der Concierge stellt den Abend um Ihren Aufenthalt herum zusammen.', 'Aufenthalt buchen'), 'fr': ("La saison court jusqu'au 8 octobre. Chambres, tables et soins se réservent séparément, et le concierge compose la soirée autour de votre séjour.", 'Réserver votre séjour')}
+
 # The three that have not happened yet, in date order.
 #
 # `link` is where More information goes. Gastronomy has its landing page; the
@@ -324,7 +326,7 @@ def hero(lang):
         f'<img src="{HERO_SRC}" srcset="{HERO_SRCSET}" '
         f'sizes="100vw" alt="{esc(ui["hero_alt"])}" fetchpriority="high" decoding="async">'
         f'</section>'
-        f'<section class="gs-hub-head" aria-labelledby="anniv-title-{lang}">'
+        f'<section class="gs-hub-head gs-anniv-head" aria-labelledby="anniv-title-{lang}">'
         f'<div class="gs-shell">'
         f'<article class="vl-card slider-card-info mx-auto" data-anim="fade">'
         f'<p class="vl-card-subtitle">{esc(ui["kicker"])}</p>'
@@ -393,6 +395,14 @@ def block(lang):
 <hr class="gs-rule">
 <h2 class="gs-display gs-display--section" id="anniv-past-{lang}" data-anim="fade">{esc(ui['past'])}</h2>
 <ul class="gs-past__list" data-anim="fade">{past}</ul>
+</section>
+
+<section class="gs-close gs-shell" data-anim="fade">
+<hr class="gs-rule">
+<p class="gs-lead">{esc(CLOSE[lang][0])}</p>
+<div class="gs-cta">
+<a class="vl-btn dark gs-btn-cta" href="{BOOKING}" target="_blank" rel="noopener">{esc(CLOSE[lang][1])}</a>
+</div>
 </section>
 
 </div>
