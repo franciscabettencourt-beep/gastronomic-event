@@ -163,14 +163,17 @@ UPCOMING = [
     },
     {
         'key': 'thalasso',
-        'img': '2024/07/VLR_yoga_cliff_homepage.jpg', 'widths': None,
+        'img': '2024/03/VLR_pool_sun_salutation_vertical.jpg', 'widths': None,
+        'srcset': ['2024/03/VLR_pool_sun_salutation_vertical-768x939.jpg 768w',
+                   '2024/03/VLR_pool_sun_salutation_vertical-838x1024.jpg 838w',
+                   '2024/03/VLR_pool_sun_salutation_vertical.jpg 850w'],
         'link': lambda lang: '',
         'alt': {
-            'en': 'Yoga on the cliff at Vilalara, the Atlantic below',
-            'pt': 'Yoga na falésia de Vilalara, o Atlântico em baixo',
-            'es': 'Yoga en el acantilado de Vilalara, el Atlántico abajo',
-            'de': 'Yoga auf der Klippe von Vilalara, der Atlantik darunter',
-            'fr': 'Yoga sur la falaise de Vilalara, l\'Atlantique en contrebas',
+            'en': 'A sun salutation by the pool at Vilalara',
+            'pt': 'Uma saudação ao sol junto à piscina do Vilalara',
+            'es': 'Un saludo al sol junto a la piscina de Vilalara',
+            'de': 'Ein Sonnengruß am Pool von Vilalara',
+            'fr': 'Une salutation au soleil au bord de la piscine de Vilalara',
         },
         'eyebrow': {
             'en': '21 to 28 September', 'pt': 'De 21 a 28 de setembro',
@@ -284,7 +287,10 @@ def media(ev, lang):
         return (f'<figure class="gs-event__media"><img src="{src}" srcset="{srcset}" '
                 f'sizes="(max-width:767px) 100vw, 50vw" alt="{alt}" '
                 f'loading="lazy" decoding="async"></figure>')
-    return (f'<figure class="gs-event__media"><img src="{UPLOADS}{ev["img"]}" '
+    extra = ''
+    if ev.get('srcset'):
+        extra = ' srcset="' + ', '.join(UPLOADS + x for x in ev['srcset']) + '"'
+    return (f'<figure class="gs-event__media"><img src="{UPLOADS}{ev["img"]}"{extra} '
             f'sizes="(max-width:767px) 100vw, 50vw" alt="{alt}" '
             f'loading="lazy" decoding="async"></figure>')
 
@@ -349,6 +355,7 @@ def countdown(lang):
     return (
         f'<section class="gs-countdown" data-until="{COUNTDOWN_UNTIL}" '
         f'aria-label="{esc(ui["next_event"])}">'
+        f'<hr class="gs-rule">'
         f'<p class="gs-countdown__kicker">{esc(ui["next_event"])}</p>'
         f'<p class="gs-countdown__title">{esc(UPCOMING[0]["title"][lang])}</p>'
         f'<div class="gs-countdown__clock">{clock}</div>'
@@ -378,7 +385,9 @@ def block(lang):
 <h2 class="gs-display gs-display--section" id="anniv-next-{lang}" data-anim="fade">{esc(ui['next'])}</h2>
 </section>
 
+<div class="gs-anniv-rows">
 {rows}
+</div>
 
 <section class="gs-past gs-shell" aria-labelledby="anniv-past-{lang}">
 <hr class="gs-rule">
