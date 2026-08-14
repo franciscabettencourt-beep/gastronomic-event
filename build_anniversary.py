@@ -360,8 +360,9 @@ def block(lang):
     ui = UI[lang]
     rows = ''.join(row(ev, lang, i) for i, ev in enumerate(UPCOMING))
     past = ''.join(
-        f'<li class="gs-tab"><span class="gs-tab__date">{esc(p["date"][lang])}</span>'
-        f'{esc(p["name"][lang])}</li>' for p in PAST)
+        f'<li class="gs-past__item">'
+        f'<span class="gs-past__date">{esc(p["date"][lang])}</span>'
+        f'<span class="gs-past__name">{esc(p["name"][lang])}</span></li>' for p in PAST)
     return f'''<!-- 60 anos de Vilalara · {lang.upper()} · a pagina inteira.
      Pagina nova, com o Modelo (Template) `Privacy`, a mesma da gastronomica.
      Cola isto num bloco de HTML personalizado. Nao colar <header> nem
@@ -379,10 +380,10 @@ def block(lang):
 
 {rows}
 
-<section class="gs-anniv gs-shell" aria-labelledby="anniv-past-{lang}">
+<section class="gs-past gs-shell" aria-labelledby="anniv-past-{lang}">
 <hr class="gs-rule">
 <h2 class="gs-display gs-display--section" id="anniv-past-{lang}" data-anim="fade">{esc(ui['past'])}</h2>
-<nav class="gs-index" aria-label="{esc(ui['past'])}"><ul>{past}</ul></nav>
+<ul class="gs-past__list" data-anim="fade">{past}</ul>
 </section>
 
 </div>

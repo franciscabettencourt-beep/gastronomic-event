@@ -536,6 +536,61 @@ a:focus-visible > .gs-media img,
 /* Hidden until the script has put real figures in, so nothing flashes 00. */
 .gs-countdown:not(.is-running) { display: none; }
 
+/* ========================= 5c. THE SEASON SO FAR ========================= */
+
+/* The evenings already served, on the anniversary page. They were briefly
+   drawn with the index row from the hub, which is a script face sized for four
+   navigation tabs; six of them wrapped into an awkward two by three and read
+   louder than the events that can still be booked, which is the opposite of
+   the point. This is quieter on purpose: the date in Gill Sans above the name
+   in Optima, three across, and no rule bracketing them. */
+.gs-past {
+  padding-block: clamp(48px, 4.6vw, 88px) clamp(72px, 7vw, 134px);
+}
+
+.gs-past__list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(32px, 3.4vw, 65px) clamp(24px, 2.6vw, 50px);
+  max-width: 1360px;
+  margin-inline: auto;
+  padding: 0;
+  list-style: none;
+}
+
+.gs-past__item {
+  text-align: center;
+  color: var(--gs-ink);
+}
+
+.gs-past__date {
+  display: block;
+  font-family: var(--font-gill);
+  font-size: clamp(11px, .625vw, 12px);
+  font-weight: 300;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  opacity: .62;
+}
+
+.gs-past__name {
+  display: block;
+  font-family: var(--font-optima);
+  font-size: clamp(15px, 1.042vw, 20px);
+  line-height: 1.3;
+  letter-spacing: .04em;
+  margin-top: clamp(6px, .52vw, 10px);
+  text-wrap: balance;
+}
+
+@media (max-width: 1024px) {
+  .gs-past__list { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 599px) {
+  .gs-past__list { grid-template-columns: 1fr; gap: 28px; }
+}
+
 /* ============================ 6. ARENA BAND ============================== */
 
 /* A single field of arena that starts partway down the portraits and ends
