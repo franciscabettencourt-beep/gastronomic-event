@@ -518,6 +518,15 @@ a:focus-visible > .gs-media img,
 /* Hidden until the script has put real figures in, so nothing flashes 00. */
 .gs-countdown:not(.is-running) { display: none; }
 
+/* The two headings that divide the anniversary page. The same rule and the
+   same section face the evening pages use over Chefs, with the air the others
+   get from their own padding. */
+.gs-anniv {
+  padding-bottom: clamp(20px, 2.08vw, 40px);
+  text-align: center;             /* as every other section here is */
+}
+.gs-anniv .gs-display { margin-top: clamp(46px, 4.4vw, 84px); }
+
 /* ========================= 5c. THE SEASON SO FAR ========================= */
 
 /* The evenings already served, on the anniversary page. They were briefly
@@ -528,7 +537,10 @@ a:focus-visible > .gs-media img,
    in Optima, three across, and no rule bracketing them. */
 .gs-past {
   padding-block: clamp(48px, 4.6vw, 88px) clamp(72px, 7vw, 134px);
+  text-align: center;
 }
+
+.gs-past .gs-display { margin-top: clamp(46px, 4.4vw, 84px); margin-bottom: clamp(34px, 3.4vw, 65px); }
 
 .gs-past__list {
   display: grid;

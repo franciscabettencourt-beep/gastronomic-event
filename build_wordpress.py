@@ -48,7 +48,15 @@ def to_wordpress(markup, lang):
     # page does not merely lose its styling: the theme hides [data-anim=fade]
     # above 1200px until its script adds .animated, and every section here
     # carries that attribute, so the page renders blank.
-    body = f'<div class="gs">\n{body.strip()}\n</div>'
+    #
+    # data-evening rides along for the same reason. It sits on <main> in the
+    # standalone pages and selects where the arena band crosses on that
+    # evening. Left behind, all four fall back to the generic 28.5% and the
+    # band lands about 12px off the pixel the artboards drew, on every event
+    # page, quietly.
+    evening = re.search(r'data-evening="([a-z]+)"', markup)
+    attr = f' data-evening="{evening.group(1)}"' if evening else ''
+    body = f'<div class="gs"{attr}>\n{body.strip()}\n</div>'
 
     header = (f'<!-- Gastronomy - September · {lang.upper()} · '
               f'cola isto no editor da página em modo HTML.\n'
