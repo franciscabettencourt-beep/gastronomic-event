@@ -456,7 +456,7 @@ a:focus-visible > .gs-media img,
   padding-block: clamp(38px, 3.65vw, 70px) clamp(44px, 4.2vw, 80px);
 }
 
-.gs-countdown .gs-rule { margin-inline: auto; }
+.gs-countdown .gs-rule { margin: 0 auto clamp(26px, 2.4vw, 46px); }
 
 .gs-countdown__kicker {
   font-family: var(--font-gill);
@@ -526,6 +526,14 @@ a:focus-visible > .gs-media img,
 /* The two headings that divide the anniversary page. The same rule and the
    same section face the evening pages use over Chefs, with the air the others
    get from their own padding. */
+/* The heading and the rows that follow it share one field of arena, so the
+   evenings still to come read as a single block rather than three cards on
+   white. The season already served sits on the light ground below them. */
+.gs-anniv,
+.gs-anniv-rows {
+  background-color: var(--gs-band);
+}
+
 .gs-anniv {
   padding-bottom: clamp(20px, 2.08vw, 40px);
   text-align: center;             /* as every other section here is */
@@ -549,9 +557,7 @@ a:focus-visible > .gs-media img,
    the point. This is quieter on purpose: the date in Gill Sans above the name
    in Optima, three across, and no rule bracketing them. */
 .gs-past {
-  background-color: var(--gs-band);
   padding-block: clamp(64px, 6.25vw, 120px) clamp(72px, 7vw, 134px);
-  margin-top: clamp(56px, 5.2vw, 100px);
   text-align: center;
 }
 
