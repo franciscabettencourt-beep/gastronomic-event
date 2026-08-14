@@ -472,9 +472,15 @@ a:focus-visible > .gs-media img,
   font-size: clamp(26px, 1.77vw, 34px);
   line-height: 1.12;
   letter-spacing: .05em;
-  margin-right: -.05em;          /* the tracking after the last glyph, taken back */
   color: var(--color-marron);
   margin-top: clamp(8px, .625vw, 12px);
+  /* The tracking leaves a gap after the last glyph, which pushes centred text a
+     half-step right. Everywhere else here that is taken back with a negative
+     right margin, but this title is a block the full width of the page, and a
+     negative margin there widens its box past the viewport and raises a
+     scrollbar over 1.3px. Corrected where the problem actually is, in the
+     painting rather than in the layout. */
+  transform: translateX(-.025em);
 }
 
 .gs-countdown__clock {
@@ -526,13 +532,14 @@ a:focus-visible > .gs-media img,
 /* The two headings that divide the anniversary page. The same rule and the
    same section face the evening pages use over Chefs, with the air the others
    get from their own padding. */
-/* The heading and the rows that follow it share one field of arena, so the
-   evenings still to come read as a single block rather than three cards on
-   white. The season already served sits on the light ground below them. */
-.gs-anniv,
-.gs-anniv-rows {
-  background-color: var(--gs-band);
-}
+/* Arena on the rows themselves, and only there.
+
+   It was briefly on the heading's section too, which is a .gs-shell: that is
+   capped at 1920 and centred, so on a wider screen the colour stopped short of
+   both edges and read as a loose bar floating over the page. The rows are full
+   bleed, so they take it cleanly. The row's own light ground has to be
+   overridden rather than merely painted behind, since it sits on top. */
+.gs-anniv-rows .gs-event { background-color: var(--gs-band); }
 
 .gs-anniv {
   padding-bottom: clamp(20px, 2.08vw, 40px);
