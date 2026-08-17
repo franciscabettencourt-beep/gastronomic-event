@@ -551,8 +551,22 @@ a:focus-visible > .gs-media img,
    Week" against "Atlantico". At the size the evening pages use, the longer
    ones broke to two lines and shouted over the photograph beside them. */
 .gs-anniv-rows .gs-event .gs-display--section {
-  font-size: clamp(26px, 1.98vw, 38px);
+  font-size: clamp(22px, 1.51vw, 29px);
   text-wrap: balance;
+}
+
+/* And the rows themselves come down with them.
+
+   The hub's row is 1000px tall at the design width, which is right there: it
+   holds an eyebrow, a title, a paragraph, a chef's signature and a button, and
+   the photograph beside it is a portrait. These three carry a third of that,
+   so the same height left a field of arena above and below the text and, where
+   one row met the next, a band of empty colour across the whole page with a
+   photograph stranded in each corner. Sized to the content instead. */
+.gs-anniv-rows .gs-event { min-height: clamp(360px, 28.6vw, 550px); }
+
+.gs-anniv-rows .gs-event__body {
+  padding-block: clamp(44px, 3.4vw, 65px) clamp(46px, 3.6vw, 69px);
 }
 
 /* The anniversary head, tightened.
