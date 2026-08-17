@@ -559,6 +559,19 @@ a:focus-visible > .gs-media img,
    overridden rather than merely painted behind, since it sits on top. */
 .gs-anniv-rows .gs-event { background-color: var(--gs-band); }
 
+/* A pale line showed where one row met the next. Not a gap: the rows touch at
+   0.000px. Their heights land on fractions, 549.109 each, so the boundaries
+   fall between device pixels and the browser paints a hairline of whatever is
+   behind, which here is the page's light ground.
+
+   Two defences. The container takes the same arena, so anything that does
+   bleed through bleeds the colour on both sides of the seam. And each row
+   after the first is pulled up a pixel, so there is no boundary left to round.
+   A pixel off the top of a photograph that is cropped to fill anyway. */
+.gs-anniv-rows { background-color: var(--gs-band); }
+
+.gs-anniv-rows .gs-event + .gs-event { margin-top: -1px; }
+
 .gs-anniv {
   padding-bottom: clamp(20px, 2.08vw, 40px);
   text-align: center;             /* as every other section here is */
