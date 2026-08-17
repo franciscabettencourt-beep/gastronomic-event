@@ -557,7 +557,8 @@ a:focus-visible > .gs-media img,
    both edges and read as a loose bar floating over the page. The rows are full
    bleed, so they take it cleanly. The row's own light ground has to be
    overridden rather than merely painted behind, since it sits on top. */
-.gs-anniv-rows .gs-event { background-color: var(--gs-band); }
+.gs-anniv-rows .gs-event,
+.gs:has(.gs-past) .gs-event { background-color: var(--gs-band); }
 
 /* A pale line showed where one row met the next. Not a gap: the rows touch at
    0.000px. Their heights land on fractions, 549.109 each, so the boundaries
@@ -570,7 +571,8 @@ a:focus-visible > .gs-media img,
    A pixel off the top of a photograph that is cropped to fill anyway. */
 .gs-anniv-rows { background-color: var(--gs-band); }
 
-.gs-anniv-rows .gs-event + .gs-event { margin-top: -1px; }
+.gs-anniv-rows .gs-event + .gs-event,
+.gs:has(.gs-past) .gs-event + .gs-event { margin-top: -1px; }
 
 .gs-anniv {
   padding-bottom: clamp(20px, 2.08vw, 40px);
@@ -581,7 +583,8 @@ a:focus-visible > .gs-media img,
 /* The anniversary rows carry names, not one word: "Thalassotherapy Legacy
    Week" against "Atlantico". At the size the evening pages use, the longer
    ones broke to two lines and shouted over the photograph beside them. */
-.gs-anniv-rows .gs-event .gs-display--section {
+.gs-anniv-rows .gs-event .gs-display--section,
+.gs:has(.gs-past) .gs-event .gs-display--section {
   font-size: clamp(22px, 1.51vw, 29px);
   text-wrap: balance;
 }
@@ -594,9 +597,11 @@ a:focus-visible > .gs-media img,
    so the same height left a field of arena above and below the text and, where
    one row met the next, a band of empty colour across the whole page with a
    photograph stranded in each corner. Sized to the content instead. */
-.gs-anniv-rows .gs-event { min-height: clamp(360px, 28.6vw, 550px); }
+.gs-anniv-rows .gs-event,
+.gs:has(.gs-past) .gs-event { min-height: clamp(360px, 28.6vw, 550px); }
 
-.gs-anniv-rows .gs-event__body {
+.gs-anniv-rows .gs-event__body,
+.gs:has(.gs-past) .gs-event__body {
   padding-block: clamp(44px, 3.4vw, 65px) clamp(46px, 3.6vw, 69px);
 }
 
