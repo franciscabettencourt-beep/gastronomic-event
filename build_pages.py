@@ -30,9 +30,12 @@ BOOKING = 'https://reservations.vilalara.com/en/hotel/vilalara'
 ZENCHEF = 'https://bookings.zenchef.com/results?rid={rid}&pid=1001&shxpid={shxpid}'
 
 TABLES = {
-    'atlantico': {'rid': 365676, 'shxpid': 127087},
-    'fogo':      {'rid': 365679, 'shxpid': 127094},
-    # 'mediterraneo' and 'algarve' still to come
+    'atlantico':    {'rid': 365676, 'shxpid': 127087},
+    'fogo':         {'rid': 365679, 'shxpid': 127094},
+    'mediterraneo': {'rid': 365678, 'shxpid': 127273},
+    # Algarve shares Coral's rid and differs only in the service. That is the
+    # client's own link, not a slip of mine, and it resolves.
+    'algarve':      {'rid': 365676, 'shxpid': 127515},
 }
 
 
