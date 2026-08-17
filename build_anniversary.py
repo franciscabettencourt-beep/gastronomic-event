@@ -116,7 +116,9 @@ UI = {
            'hero_alt': 'Vilalara vu du ciel, les jardins entre la falaise et la mer'},
 }
 
-CLOSE = {'en': ('The season runs to the eighth of October. Rooms, tables and treatments are booked separately, and the concierge will put an evening together around your stay.', 'Reserve your stay'), 'pt': ('A temporada vai até 8 de outubro. Quartos, mesas e tratamentos reservam-se à parte, e o concierge monta a noite à volta da sua estadia.', 'Reserve a sua estadia'), 'es': ('La temporada se extiende hasta el 8 de octubre. Habitaciones, mesas y tratamientos se reservan por separado, y el concierge compone la velada en torno a su estancia.', 'Reserve su estancia'), 'de': ('Die Saison läuft bis zum 8. Oktober. Zimmer, Tische und Behandlungen werden getrennt gebucht, und der Concierge stellt den Abend um Ihren Aufenthalt herum zusammen.', 'Aufenthalt buchen'), 'fr': ("La saison court jusqu'au 8 octobre. Chambres, tables et soins se réservent séparément, et le concierge compose la soirée autour de votre séjour.", 'Réserver votre séjour')}
+# The closing line. Not a summary of what to book: the buttons above have
+# already said that, and a page that ends on logistics ends on paperwork.
+CLOSE = {'en': ('Sixty years are not celebrated in a single evening. The season continues, and so does the invitation.', 'Reserve your stay'), 'pt': ('Sessenta anos não se celebram numa só noite. A temporada continua, e o convite também.', 'Reserve a sua estadia'), 'es': ('Sesenta años no se celebran en una sola noche. La temporada continúa, y la invitación también.', 'Reserve su estancia'), 'de': ('Sechzig Jahre feiert man nicht an einem einzigen Abend. Die Saison geht weiter, und die Einladung auch.', 'Aufenthalt buchen'), 'fr': ("Soixante ans ne se célèbrent pas en une seule soirée. La saison continue, et l'invitation aussi.", 'Réserver votre séjour')}
 
 # The three that have not happened yet, in date order.
 #
